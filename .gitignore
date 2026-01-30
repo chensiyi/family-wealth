@@ -1,0 +1,19 @@
+# OS & editor
+Thumbs.db
+.DS_Store
+Desktop.ini
+.vscode/
+.idea/
+
+# Logs & caches
+*.log
+*.tmp
+.cache/
+
+# Env & secrets (none used, reserved)
+.env
+.env.*
+
+# Trae IDE
+.trae/
+
