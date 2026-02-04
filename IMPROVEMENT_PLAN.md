@@ -1,6 +1,6 @@
 # 项目改进路线图 (Improvement Roadmap)
 
-本计划基于 GitHub Copilot 的建议，旨在系统性地提升家族资产管理体系的专业度、准确性与可操作性。
+本计划基于和GitHub Copilot的沟通，旨在系统性地提升家族资产管理体系的专业度、准确性与可操作性。
 
 ## 第一层：基础修复与深化 (Layer 1: Fixes & Deepening)
 - [ ] **错误修复与概念校准**
@@ -28,3 +28,13 @@
 ## 第四层：收尾与索引 (Layer 4: Finalization)
 - [x] 更新 `README.md` 目录结构。
 - [x] 更新 `07-index-and-update-rules.md` 索引规则。
+
+---
+
+## 下一个版本改进项 (Next Version: vNext)
+- 为每章增加“本章目标/产出物”小节，提升阅读位置感。
+- 在 `13-cycle-configuration.md` 增加“信号范围与示例数值”表格，降低新手门槛。
+- 在 `05-system-design-module.md` 增加“组件—章节—动作”对照表，强化闭环映射。
+- 在 `10-operating-manual.md` 补充“季度会议议程模板”的链接提示，提升执行落地性。
+- （可选）统一导航区采用“中文标题 + 英文别名”双语格式。
+- （可选）在各章导航区标注本章核心产出物链接（模板/清单）。
