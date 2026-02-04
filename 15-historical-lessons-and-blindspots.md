@@ -1,6 +1,6 @@
 # 历史的残酷回响：近百年财富毁灭的盲点 (Lessons from the Last Century)
 
-> **创始人独白**：作为体系的构建者，我审视了现有的模型。它在数学上是完美的，但在人性与政治的乱世中显得过于天真。为此，我翻阅了近 100 年的财富毁灭史，找到了那些常被忽略、却能一击致命的“暗礁”。
+> **创始人独白**：(真正的创始人提出了问题，以下是ai对问题的审视)作为体系的构建者，我审视了现有的模型。它在数学上是完美的，但在人性与政治的乱世中显得过于天真。为此，我翻阅了近 100 年的财富毁灭史，找到了那些常被忽略、却能一击致命的“暗礁”。
 
 ## 1. 摩擦成本：复利的隐形杀手 (The Silent Killer: Friction)
 
@@ -71,3 +71,26 @@
     *   重新计算所有投资的“税后费后真实回报”，剔除那些表面光鲜但摩擦成本高的资产。
 3.  **启动“B计划”**：
     *   如果明天护照所在国发生剧烈动荡，我们能否在 48 小时内全家离境并在另一国重启生活？（第二身份、备用住所、离岸流动性）。
+
+---
+
+## 导航与关联
+- 返回目录：[README](README.md)
+- 全套章节：
+  - [01 框架总览](01-framework-overview.md)
+  - [02 历史构成](02-historical-structure.md)
+  - [03 参与者与层级](03-actors-and-tiers.md)
+  - [04 游戏机制与策略](04-game-mechanics-and-strategy.md)
+  - [05 体系设计模块](05-system-design-module.md)
+  - [06 定位与意义](06-positioning-and-meaning.md)
+  - [07 索引与更新规则](07-index-and-update-rules.md)
+  - [08 情报系统](08-intelligence-system.md)
+  - [09 行为体系](09-action-system.md)
+  - [10 运行说明书](10-operating-manual.md)
+  - [11 大师理论基石](11-master-theories.md)
+  - [12 资产相关性矩阵](12-asset-correlation-matrix.md)
+  - [13 周期配置与动态调整](13-cycle-configuration.md)
+  - [14 家族治理与传承](14-family-governance.md)
+  - [15 历史反思与盲点](15-historical-lessons-and-blindspots.md)
+
+上一章：[14 家族治理与传承](14-family-governance.md)

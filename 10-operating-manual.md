@@ -91,3 +91,26 @@
 ---
 
 *本手册应打印存档，并由家族核心成员签字确认，作为共同遵守的“家族宪法”修正案。*
+
+---
+
+## 导航与关联
+- 返回目录：[README](README.md)
+- 全套章节：
+  - [01 框架总览](01-framework-overview.md)
+  - [02 历史构成](02-historical-structure.md)
+  - [03 参与者与层级](03-actors-and-tiers.md)
+  - [04 游戏机制与策略](04-game-mechanics-and-strategy.md)
+  - [05 体系设计模块](05-system-design-module.md)
+  - [06 定位与意义](06-positioning-and-meaning.md)
+  - [07 索引与更新规则](07-index-and-update-rules.md)
+  - [08 情报系统](08-intelligence-system.md)
+  - [09 行为体系](09-action-system.md)
+  - [10 运行说明书](10-operating-manual.md)
+  - [11 大师理论基石](11-master-theories.md)
+  - [12 资产相关性矩阵](12-asset-correlation-matrix.md)
+  - [13 周期配置与动态调整](13-cycle-configuration.md)
+  - [14 家族治理与传承](14-family-governance.md)
+  - [15 历史反思与盲点](15-historical-lessons-and-blindspots.md)
+
+上一章：[09 行为体系](09-action-system.md) · 下一章：[11 大师理论基石](11-master-theories.md)

@@ -33,3 +33,26 @@
 - 保留原始出处与快照，避免断链与误读
 - 对涉及法律/税务的条目，标注非建议与需咨询专业人士
 - 对涉及平台与技术的条目，记录版本与适用范围
+
+---
+
+## 导航与关联
+- 返回目录：[README](README.md)
+- 全套章节：
+  - [01 框架总览](01-framework-overview.md)
+  - [02 历史构成](02-historical-structure.md)
+  - [03 参与者与层级](03-actors-and-tiers.md)
+  - [04 游戏机制与策略](04-game-mechanics-and-strategy.md)
+  - [05 体系设计模块](05-system-design-module.md)
+  - [06 定位与意义](06-positioning-and-meaning.md)
+  - [07 索引与更新规则](07-index-and-update-rules.md)
+  - [08 情报系统](08-intelligence-system.md)
+  - [09 行为体系](09-action-system.md)
+  - [10 运行说明书](10-operating-manual.md)
+  - [11 大师理论基石](11-master-theories.md)
+  - [12 资产相关性矩阵](12-asset-correlation-matrix.md)
+  - [13 周期配置与动态调整](13-cycle-configuration.md)
+  - [14 家族治理与传承](14-family-governance.md)
+  - [15 历史反思与盲点](15-historical-lessons-and-blindspots.md)
+
+上一章：[06 定位与意义](06-positioning-and-meaning.md) · 下一章：[08 情报系统](08-intelligence-system.md)

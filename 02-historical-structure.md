@@ -81,3 +81,26 @@
 2.  **法律结构优于资产选择**：先解决“钱归谁管、安不安全”的问题（法域/信托/公司），再解决“买什么股票”的问题。
 3.  **拥抱稀缺，对抗稀释**：在信用货币时代，唯一的敌人是货币增发。必须持有无法被低成本复制的资产（核心地段、垄断股权、黄金/比特币）。
 4.  **在动荡中反脆弱**：历史告诉我们，和平是短暂的例外，混乱是长期的常态。系统设计必须假设明天就是“明斯基时刻”。
+
+---
+
+## 导航与关联
+- 返回目录：[README](README.md)
+- 全套章节：
+  - [01 框架总览](01-framework-overview.md)
+  - [02 历史构成](02-historical-structure.md)
+  - [03 参与者与层级](03-actors-and-tiers.md)
+  - [04 游戏机制与策略](04-game-mechanics-and-strategy.md)
+  - [05 体系设计模块](05-system-design-module.md)
+  - [06 定位与意义](06-positioning-and-meaning.md)
+  - [07 索引与更新规则](07-index-and-update-rules.md)
+  - [08 情报系统](08-intelligence-system.md)
+  - [09 行为体系](09-action-system.md)
+  - [10 运行说明书](10-operating-manual.md)
+  - [11 大师理论基石](11-master-theories.md)
+  - [12 资产相关性矩阵](12-asset-correlation-matrix.md)
+  - [13 周期配置与动态调整](13-cycle-configuration.md)
+  - [14 家族治理与传承](14-family-governance.md)
+  - [15 历史反思与盲点](15-historical-lessons-and-blindspots.md)
+
+上一章：[01 框架总览](01-framework-overview.md) · 下一章：[03 参与者与层级](03-actors-and-tiers.md)
