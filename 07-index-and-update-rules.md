@@ -1,6 +1,15 @@
 # 资料索引与更新规则
 
 ## 索引结构（建议）
+- **核心理论库** (11-master-theories.md)
+    - 现代投资组合理论 (Markowitz)
+    - 全天候策略 (Dalio)
+    - 反脆弱与杠铃策略 (Taleb)
+    - 行为金融学 (Shiller)
+- **工具与模型**
+    - 资产相关性矩阵 (12-asset-correlation-matrix.md)
+    - 周期配置模型 (13-cycle-configuration.md)
+    - 家族宪章模板 (14-family-governance.md)
 - 事件与时间线：重大政策、制裁、技术迁移、税制变更
 - 法域与规则：税务居民、继承/信托、公司法、资本流动规定
 - 托管与机构：银行/券商/保险/信托、费用与风险
