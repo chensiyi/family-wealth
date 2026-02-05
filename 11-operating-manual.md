@@ -1,5 +1,9 @@
 # 系统运行说明书：操作手册 (The Operating Manual)
 
+> 变更记录
+> - 历史文件名：10-operating-manual.md
+> - 更名原因：按新主线顺序重排为执行层（现编号 11）
+
 ## 1. 系统概述
 本手册旨在将“家族资产打理”知识体系转化为可执行的日常操作。它集成了**情报系统（Eyes）**与**行为体系（Hands）**，确保在复杂的外部环境下，家族财富管理能够像精密机器一样运转。
 
@@ -52,6 +56,15 @@
     *   **绩效归因**：赚的是运气的钱还是逻辑的钱？
     *   **系统升级**：更新白名单/黑名单，修订SOP。
 
+#### 季度会议议程模板
+- 目标函数检查：本季目标是否达成，偏差原因
+- 权重与久期：对比目标中枢与当前持仓，拟议调整
+- 信号核对：查看“信号—阈值—动作表”（见 [08 周期配置](08-cycle-configuration.md)）
+- 红旗与风控：本季红旗事件与处置记录，新增防线
+- SOP修订：新增/废止流程，触发器与步骤更新
+- 合规与税务：重要申报与审计节点确认
+- 行动项与负责人：明确截止日期与记录位置
+
 ### 每年 (Yearly) - *耗时：1-2天*
 *   **战略复盘**：
     *   回顾家族目标（定位与意义章节）。
@@ -102,15 +115,15 @@
   - [03 参与者与层级](03-actors-and-tiers.md)
   - [04 游戏机制与策略](04-game-mechanics-and-strategy.md)
   - [05 体系设计模块](05-system-design-module.md)
-  - [06 定位与意义](06-positioning-and-meaning.md)
-  - [07 索引与更新规则](07-index-and-update-rules.md)
-  - [08 情报系统](08-intelligence-system.md)
-  - [09 行为体系](09-action-system.md)
-  - [10 运行说明书](10-operating-manual.md)
-  - [11 大师理论基石](11-master-theories.md)
-  - [12 资产相关性矩阵](12-asset-correlation-matrix.md)
-  - [13 周期配置与动态调整](13-cycle-configuration.md)
-  - [14 家族治理与传承](14-family-governance.md)
-  - [15 历史反思与盲点](15-historical-lessons-and-blindspots.md)
+  - [06 家族治理与传承](06-family-governance.md)
+  - [07 资产相关性矩阵](07-asset-correlation-matrix.md)
+  - [08 周期配置与动态调整](08-cycle-configuration.md)
+  - [09 情报系统](09-intelligence-system.md)
+  - [10 行为体系](10-action-system.md)
+  - [11 运行说明书](11-operating-manual.md)
+  - [12 历史反思与盲点](12-historical-lessons-and-blindspots.md)
+  - [13 定位与意义](13-positioning-and-meaning.md)
+  - [14 索引与更新规则](14-index-and-update-rules.md)
+  - [15 大师理论基石](15-master-theories.md)
 
-上一章：[09 行为体系](09-action-system.md) · 下一章：[11 大师理论基石](11-master-theories.md)
+上一章：[10 行为体系](10-action-system.md) · 下一章：[12 历史反思与盲点](12-historical-lessons-and-blindspots.md)

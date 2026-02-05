@@ -1,5 +1,9 @@
 # 经济周期与动态调整 (Economic Cycle Configuration)
 
+> 变更记录
+> - 历史文件名：13-cycle-configuration.md
+> - 更名原因：按新主线顺序重排为配置层（现编号 08）
+
 > **核心摘要**：本章节提供了一套基于宏观气象（增长与通胀）的动态调仓手册。我们不预测未来，但我们根据“现在的天气”决定穿什么衣服。
 
 ## 1. 四季模型 (The Four Seasons)
@@ -51,6 +55,16 @@
 - **当 CPI < 1% (通缩风险)**：
     - **动作**：超配长期名义国债。
 
+#### C. 信号—阈值—动作表
+| 信号 | 阈值定义 | 动作类别 | 具体动作 |
+| :--- | :--- | :--- | :--- |
+| Shiller CAPE | > 30 (极高估) | 减仓权益 | 股票 30% → 20%，增配短债/现金 |
+| Shiller CAPE | < 15 (极低估) | 加仓权益 | 股票 30% → 40%，资金来自债券端 |
+| CPI YoY | > 5% 且上升 | 防通胀 | 减长债，增配 TIPS 与商品 |
+| CPI YoY | < 1% | 通缩防守 | 超配长期名义国债 |
+| 名义利率 | 3月内上行 >100bp | 降久期 | 降低长期债久期，增配中短债 |
+| 实际利率 | 转正且持续 2 季度 | 权重中枢下调 | 权重向现金/短债倾斜 5-10% |
+
 ---
 
 ## 4. 典型剧本演练 (Scenarios)
@@ -95,15 +109,15 @@
   - [03 参与者与层级](03-actors-and-tiers.md)
   - [04 游戏机制与策略](04-game-mechanics-and-strategy.md)
   - [05 体系设计模块](05-system-design-module.md)
-  - [06 定位与意义](06-positioning-and-meaning.md)
-  - [07 索引与更新规则](07-index-and-update-rules.md)
-  - [08 情报系统](08-intelligence-system.md)
-  - [09 行为体系](09-action-system.md)
-  - [10 运行说明书](10-operating-manual.md)
-  - [11 大师理论基石](11-master-theories.md)
-  - [12 资产相关性矩阵](12-asset-correlation-matrix.md)
-  - [13 周期配置与动态调整](13-cycle-configuration.md)
-  - [14 家族治理与传承](14-family-governance.md)
-  - [15 历史反思与盲点](15-historical-lessons-and-blindspots.md)
+  - [06 家族治理与传承](06-family-governance.md)
+  - [07 资产相关性矩阵](07-asset-correlation-matrix.md)
+  - [08 周期配置与动态调整](08-cycle-configuration.md)
+  - [09 情报系统](09-intelligence-system.md)
+  - [10 行为体系](10-action-system.md)
+  - [11 运行说明书](11-operating-manual.md)
+  - [12 历史反思与盲点](12-historical-lessons-and-blindspots.md)
+  - [13 定位与意义](13-positioning-and-meaning.md)
+  - [14 索引与更新规则](14-index-and-update-rules.md)
+  - [15 大师理论基石](15-master-theories.md)
 
-上一章：[12 资产相关性矩阵](12-asset-correlation-matrix.md) · 下一章：[14 家族治理与传承](14-family-governance.md)
+上一章：[07 资产相关性矩阵](07-asset-correlation-matrix.md) · 下一章：[09 情报系统](09-intelligence-system.md)

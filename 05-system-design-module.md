@@ -19,7 +19,7 @@
 - 法律载体：控股公司/运营公司/信托或保险载体的风险隔离
 - 托管策略：多机构托管、费用与透明度评估、账户级冗余
 ## 核心子系统定义 (System Core Components)
-本体系由四个经过验证的工程组件组装而成（详细原理见 [11-master-theories.md](11-master-theories.md)）：
+本体系由四个经过验证的工程组件组装而成（详细原理见 [15-master-theories.md](15-master-theories.md)）：
 
 ### 1. 结构稳定性组件 (The Chassis) - 60-80% 仓位
 *目标：在任何天气下不散架*
@@ -77,6 +77,21 @@
 
 ---
 
+## 组件—章节—动作对照表
+| 组件 | 关联章节 | 关键动作 |
+| :--- | :--- | :--- |
+| 法域与身份 | [06 家族治理](06-family-governance.md) · 本章 | 税务居民规划、资产所在地分散、身份与资产匹配 |
+| 法律载体 | 本章 · [11 运行说明书](11-operating-manual.md) | 控股/运营/信托/保险载体落地与文档治理 |
+| 托管与冗余 | 本章 · [11 运行说明书](11-operating-manual.md) | 多机构托管、备份账户、费用与透明度评估 |
+| 组合底盘 | [08 周期配置](08-cycle-configuration.md) · [07 相关性矩阵](07-asset-correlation-matrix.md) | 权重中枢、相关性约束、再平衡频率 |
+| 调仓信号 | [08 周期配置](08-cycle-configuration.md) | CAPE/CPI/利率阈值与“信号—阈值—动作”表 |
+| 情报系统 | [09 情报系统](09-intelligence-system.md) | 看板字段、红旗侦测、演练与复盘 |
+| 行为SOP | [10 行为体系](10-action-system.md) | 再平衡/熔断/资金注入/减杠杆触发与步骤 |
+| 极端预案 | [11 运行说明书](11-operating-manual.md) · [10 行为体系](10-action-system.md) | 账户冻结剧本、平台迁移清单、通讯与证据备份 |
+| 历史纠偏 | [12 历史反思与盲点](12-historical-lessons-and-blindspots.md) | 失败模式清单、红旗更新、防线加固 |
+
+---
+
 ## 导航与关联
 - 返回目录：[README](README.md)
 - 全套章节：
@@ -85,15 +100,15 @@
   - [03 参与者与层级](03-actors-and-tiers.md)
   - [04 游戏机制与策略](04-game-mechanics-and-strategy.md)
   - [05 体系设计模块](05-system-design-module.md)
-  - [06 定位与意义](06-positioning-and-meaning.md)
-  - [07 索引与更新规则](07-index-and-update-rules.md)
-  - [08 情报系统](08-intelligence-system.md)
-  - [09 行为体系](09-action-system.md)
-  - [10 运行说明书](10-operating-manual.md)
-  - [11 大师理论基石](11-master-theories.md)
-  - [12 资产相关性矩阵](12-asset-correlation-matrix.md)
-  - [13 周期配置与动态调整](13-cycle-configuration.md)
-  - [14 家族治理与传承](14-family-governance.md)
-  - [15 历史反思与盲点](15-historical-lessons-and-blindspots.md)
+  - [06 家族治理与传承](06-family-governance.md)
+  - [07 资产相关性矩阵](07-asset-correlation-matrix.md)
+  - [08 周期配置与动态调整](08-cycle-configuration.md)
+  - [09 情报系统](09-intelligence-system.md)
+  - [10 行为体系](10-action-system.md)
+  - [11 运行说明书](11-operating-manual.md)
+  - [12 历史反思与盲点](12-historical-lessons-and-blindspots.md)
+  - [13 定位与意义](13-positioning-and-meaning.md)
+  - [14 索引与更新规则](14-index-and-update-rules.md)
+  - [15 大师理论基石](15-master-theories.md)
 
-上一章：[04 游戏机制与策略](04-game-mechanics-and-strategy.md) · 下一章：[06 定位与意义](06-positioning-and-meaning.md)
+上一章：[04 游戏机制与策略](04-game-mechanics-and-strategy.md) · 下一章：[06 家族治理与传承](06-family-governance.md)

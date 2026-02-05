@@ -1,5 +1,9 @@
 # 情报系统：战场沙盘与底牌透视
 
+> 变更记录
+> - 历史文件名：08-intelligence-system.md
+> - 更名原因：按新主线顺序重排为执行层（现编号 09）
+
 ## 核心理念
 在家族资产管理的“战场”上，情报不对称是风险的主要来源。本系统的目标是将散乱的信息转化为**可行动的情报（Actionable Intelligence）**，在设定的投资边界内形成上帝视角的“沙盘”，看清对手方的底牌。
 
@@ -89,15 +93,15 @@
   - [03 参与者与层级](03-actors-and-tiers.md)
   - [04 游戏机制与策略](04-game-mechanics-and-strategy.md)
   - [05 体系设计模块](05-system-design-module.md)
-  - [06 定位与意义](06-positioning-and-meaning.md)
-  - [07 索引与更新规则](07-index-and-update-rules.md)
-  - [08 情报系统](08-intelligence-system.md)
-  - [09 行为体系](09-action-system.md)
-  - [10 运行说明书](10-operating-manual.md)
-  - [11 大师理论基石](11-master-theories.md)
-  - [12 资产相关性矩阵](12-asset-correlation-matrix.md)
-  - [13 周期配置与动态调整](13-cycle-configuration.md)
-  - [14 家族治理与传承](14-family-governance.md)
-  - [15 历史反思与盲点](15-historical-lessons-and-blindspots.md)
+  - [06 家族治理与传承](06-family-governance.md)
+  - [07 资产相关性矩阵](07-asset-correlation-matrix.md)
+  - [08 周期配置与动态调整](08-cycle-configuration.md)
+  - [09 情报系统](09-intelligence-system.md)
+  - [10 行为体系](10-action-system.md)
+  - [11 运行说明书](11-operating-manual.md)
+  - [12 历史反思与盲点](12-historical-lessons-and-blindspots.md)
+  - [13 定位与意义](13-positioning-and-meaning.md)
+  - [14 索引与更新规则](14-index-and-update-rules.md)
+  - [15 大师理论基石](15-master-theories.md)
 
-上一章：[07 索引与更新规则](07-index-and-update-rules.md) · 下一章：[09 行为体系](09-action-system.md)
+上一章：[08 周期配置与动态调整](08-cycle-configuration.md) · 下一章：[10 行为体系](10-action-system.md)

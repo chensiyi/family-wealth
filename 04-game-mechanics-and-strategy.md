@@ -21,6 +21,57 @@
 - 托管与对手方：稳健机构与透明度要求，多通道冗余防单点失败
 - 极端事件预案：账户冻结与平台迁移剧本、通讯与文件备份、跨法域取用
 
+---
+
+## 核心策略索引与层级图
+- 战略层（Why）：跨周期的安全边界与目标函数 → [01 框架总览](01-framework-overview.md)、[02 历史构成](02-historical-structure.md)
+- 结构层（Where）：法域、身份与载体选择，风险隔离 → S-01/S-07
+- 配置层（What）：底仓与权重、相关性与调仓规则 → S-02/S-03/S-04
+- 执行层（How）：情报→行为→运行说明书闭环 → S-06/S-05/S-08
+- 纠偏层（Fix）：历史盲点与红旗侦测、熔断回滚 → S-09
+
+---
+
+## S-01~S-09 模块详解
+- S-01 结构优先（风险隔离与架构）
+  - 目标：先保栖息地，分离经营/投资/消费风险
+  - 动作：公司/信托/保险载体、账户分层、文档与权限治理
+-  - 引用：[05 体系设计模块](05-system-design-module.md)、[06 家族治理](06-family-governance.md)
+- S-02 全天候底仓（组合中枢与风险平价）
+  - 目标：任何周期下维持基本可用的购买力与现金流
+  - 动作：股票/债券/商品/现金权重与再平衡频率
+-  - 引用：[08 周期配置与动态调整](08-cycle-configuration.md)
+- S-03 相关性矩阵（数学基石与权重校准）
+  - 目标：用相关性与波动约束组合风险，降低同向踩踏
+  - 动作：相关性估计窗口、权重上限、对冲与替代资产
+-  - 引用：[07 资产相关性矩阵](07-asset-correlation-matrix.md)
+- S-04 动态调仓规则（信号与阈值）
+  - 目标：用可解释的宏/估值信号驱动加减仓
+  - 动作：CAPE 分位、通胀趋势、利率变动 → 对应幅度与节奏
+-  - 引用：[08 周期配置与动态调整](08-cycle-configuration.md)
+- S-05 行为 SOP（流程与触发器）
+  - 目标：把策略落到动作，避免情绪化
+  - 动作：再平衡/熔断/资金注入/减杠杆的触发条件与步骤
+  - 引用：[10 行为体系](10-action-system.md)
+- S-06 情报导航（沙盘与红旗）
+  - 目标：提前看到“窗口变化”和“制度边界”
+  - 动作：看板字段、红旗列表、演练频率与复盘
+-  - 引用：[09 情报系统](09-intelligence-system.md)
+- S-07 法域与托管（身份与资产所在地）
+  - 目标：降低可冻结比例，提升跨法域可取用性
+  - 动作：税务居民规划、资产所在地分散、双托管与备份账户
+-  - 引用：[05 体系设计模块](05-system-design-module.md)、[06 家族治理](06-family-governance.md)、[11 运行说明书](11-operating-manual.md)
+- S-08 极端事件预案（撤退与回滚）
+  - 目标：在最坏情形下存活并恢复
+  - 动作：账户冻结剧本、平台迁移清单、通讯与证据备份
+-  - 引用：[10 行为体系](10-action-system.md)、[11 运行说明书](11-operating-manual.md)
+- S-09 历史反思与盲点（纠偏与防线加固）
+  - 目标：以历史失败案例校正系统的脆弱点
+  - 动作：主权风险/通胀错判/平台单点/认知偏误的防诈清单
+-  - 引用：[12 历史反思与盲点](12-historical-lessons-and-blindspots.md)
+
+---
+
 ## 场景化叙事（示例）
 - 扩张季：低利率→信用扩张→资产价格上涨→杠杆增加；策略：控制杠杆、锁定长期资金、审慎增配生产性与资源类资产
 - 收缩季：利率上升→融资收紧→现金流压力→清算瀑布；策略：提升现金流质量、增加防御性资产、减少非核心敞口
@@ -37,15 +88,15 @@
   - [03 参与者与层级](03-actors-and-tiers.md)
   - [04 游戏机制与策略](04-game-mechanics-and-strategy.md)
   - [05 体系设计模块](05-system-design-module.md)
-  - [06 定位与意义](06-positioning-and-meaning.md)
-  - [07 索引与更新规则](07-index-and-update-rules.md)
-  - [08 情报系统](08-intelligence-system.md)
-  - [09 行为体系](09-action-system.md)
-  - [10 运行说明书](10-operating-manual.md)
-  - [11 大师理论基石](11-master-theories.md)
-  - [12 资产相关性矩阵](12-asset-correlation-matrix.md)
-  - [13 周期配置与动态调整](13-cycle-configuration.md)
-  - [14 家族治理与传承](14-family-governance.md)
-  - [15 历史反思与盲点](15-historical-lessons-and-blindspots.md)
+  - [06 家族治理与传承](06-family-governance.md)
+  - [07 资产相关性矩阵](07-asset-correlation-matrix.md)
+  - [08 周期配置与动态调整](08-cycle-configuration.md)
+  - [09 情报系统](09-intelligence-system.md)
+  - [10 行为体系](10-action-system.md)
+  - [11 运行说明书](11-operating-manual.md)
+  - [12 历史反思与盲点](12-historical-lessons-and-blindspots.md)
+  - [13 定位与意义](13-positioning-and-meaning.md)
+  - [14 索引与更新规则](14-index-and-update-rules.md)
+  - [15 大师理论基石](15-master-theories.md)
 
 上一章：[03 参与者与层级](03-actors-and-tiers.md) · 下一章：[05 体系设计模块](05-system-design-module.md)

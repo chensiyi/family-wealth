@@ -1,5 +1,9 @@
 # 资产相关性矩阵与分散化原理 (Asset Correlation & Diversification)
 
+> 变更记录
+> - 历史文件名：12-asset-correlation-matrix.md
+> - 更名原因：按新主线顺序重排为配置层（现编号 07）
+
 > **核心摘要**：本章节揭示了资产配置的数学本质——利用资产间的不相关性（甚至负相关性）来抵消波动。这是金融学中唯一的“免费午餐”。
 
 ## 1. 为什么分散化是唯一的免费午餐？
@@ -80,15 +84,15 @@ $$ \sigma_p^2 = w_1^2\sigma_1^2 + w_2^2\sigma_2^2 + 2w_1w_2\sigma_1\sigma_2\rho_
   - [03 参与者与层级](03-actors-and-tiers.md)
   - [04 游戏机制与策略](04-game-mechanics-and-strategy.md)
   - [05 体系设计模块](05-system-design-module.md)
-  - [06 定位与意义](06-positioning-and-meaning.md)
-  - [07 索引与更新规则](07-index-and-update-rules.md)
-  - [08 情报系统](08-intelligence-system.md)
-  - [09 行为体系](09-action-system.md)
-  - [10 运行说明书](10-operating-manual.md)
-  - [11 大师理论基石](11-master-theories.md)
-  - [12 资产相关性矩阵](12-asset-correlation-matrix.md)
-  - [13 周期配置与动态调整](13-cycle-configuration.md)
-  - [14 家族治理与传承](14-family-governance.md)
-  - [15 历史反思与盲点](15-historical-lessons-and-blindspots.md)
+  - [06 家族治理与传承](06-family-governance.md)
+  - [07 资产相关性矩阵](07-asset-correlation-matrix.md)
+  - [08 周期配置与动态调整](08-cycle-configuration.md)
+  - [09 情报系统](09-intelligence-system.md)
+  - [10 行为体系](10-action-system.md)
+  - [11 运行说明书](11-operating-manual.md)
+  - [12 历史反思与盲点](12-historical-lessons-and-blindspots.md)
+  - [13 定位与意义](13-positioning-and-meaning.md)
+  - [14 索引与更新规则](14-index-and-update-rules.md)
+  - [15 大师理论基石](15-master-theories.md)
 
-上一章：[11 大师理论基石](11-master-theories.md) · 下一章：[13 周期配置与动态调整](13-cycle-configuration.md)
+上一章：[06 家族治理与传承](06-family-governance.md) · 下一章：[08 周期配置与动态调整](08-cycle-configuration.md)
