@@ -11,7 +11,6 @@
 - 形成可迭代的资料索引与版本化更新流程
 
 ## 目录
-- [术语词汇表](TERMINOLOGY_GLOSSARY.md) ← **建议优先阅读**
 - [01 框架总览](01-framework-overview.md)
 - [02 历史构成](02-historical-structure.md)
 - [03 参与者与层级](03-actors-and-tiers.md)
@@ -27,6 +26,10 @@
 - [13 定位与意义](13-positioning-and-meaning.md)
 - [14 资料索引与更新规则](14-index-and-update-rules.md)
 - [15 大师理论基石](15-master-theories.md)
+
+## 附件（术语与可视化图表）
+- [术语词汇表](TERMINOLOGY_GLOSSARY.md) ← **建议优先阅读**
+- [关键流程可视化图表](VISUAL_FLOWCHARTS.md)
 - [改进计划](logs/IMPROVEMENT_PLAN.md)
 
 ## 主线逻辑与快速导航
@@ -44,7 +47,7 @@
 - 保守与合法：优先合规、风险控制置于收益之上
 - 证据与来源：观点必须可溯源，资料条目注明出处与时间
 - 版本化：每次更新记录时间戳与要点，保持可回滚与对比
-- 每次重大修改前必须阅读和更新 SYSTEM_ARCHITECTURE_DESIGN.md
+- 每次重大修改前必须阅读和更新 docs/SYSTEM_ARCHITECTURE_DESIGN.md
 - 更新时，建议通过ai助手阅读相关规则，再进行文档修改和自动化验证。
 
 ### 工程记录
@@ -54,6 +57,10 @@
 - **基础设施评估**：`logs/INFRASTRUCTURE_ASSESSMENT.md`
 - **架构设计文档**：`docs/SYSTEM_ARCHITECTURE_DESIGN.md`
 - **日志目录索引**：`logs/README.md` (详细使用说明)
+
+### 附件文件
+- **术语词汇表**：`TERMINOLOGY_GLOSSARY.md`
+- **流程可视化图表**：`VISUAL_FLOWCHARTS.md`
 
 ## 日常使用和维护指南
 
