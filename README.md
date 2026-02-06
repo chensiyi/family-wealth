@@ -11,6 +11,7 @@
 - 形成可迭代的资料索引与版本化更新流程
 
 ## 目录
+- [术语词汇表](TERMINOLOGY_GLOSSARY.md) ← **建议优先阅读**
 - [01 框架总览](01-framework-overview.md)
 - [02 历史构成](02-historical-structure.md)
 - [03 参与者与层级](03-actors-and-tiers.md)
@@ -26,7 +27,7 @@
 - [13 定位与意义](13-positioning-and-meaning.md)
 - [14 资料索引与更新规则](14-index-and-update-rules.md)
 - [15 大师理论基石](15-master-theories.md)
-- [修改计划](IMPLEMENTATION-PLAN.md)
+- [改进计划](logs/IMPROVEMENT_PLAN.md)
 
 ## 主线逻辑与快速导航
 - 战略层（Why）：跨周期的安全边界与目标函数 → [01 框架总览](01-framework-overview.md)、[02 历史构成](02-historical-structure.md)
@@ -43,23 +44,32 @@
 - 保守与合法：优先合规、风险控制置于收益之上
 - 证据与来源：观点必须可溯源，资料条目注明出处与时间
 - 版本化：每次更新记录时间戳与要点，保持可回滚与对比
+- 每次重大修改前必须阅读和更新 SYSTEM_ARCHITECTURE_DESIGN.md
+- 更新时，建议通过ai助手阅读相关规则，再进行文档修改和自动化验证。
 
-## 项目发展状态
+### 工程记录
+- **统一修改日志**：`logs/CHANGE_LOG.md`
+- **改进计划**：`logs/IMPROVEMENT_PLAN.md`
+- **短期优化追踪**：`logs/SHORT_TERM_OPTIMIZATION_TRACKING.md`
+- **基础设施评估**：`logs/INFRASTRUCTURE_ASSESSMENT.md`
+- **架构设计文档**：`docs/SYSTEM_ARCHITECTURE_DESIGN.md`
+- **日志目录索引**：`logs/README.md` (详细使用说明)
 
-### 最新审视结果
-- **审视时间**：2026年2月5日
-- **审视结论**：项目已完成基础框架搭建，具备良好的发展潜力
-- **详细报告**：参见 `PROJECT_ASSESSMENT_REPORT.md`
+## 日常使用和维护指南
 
-### 当前重点任务
-1. **文档优化**：完善内容质量和用户体验
-2. **工具开发**：构建基础的数字化管理原型  
-3. **流程标准化**：建立规范化的工作流程和标准
+### 📚 新用户入门
+1. **首选阅读**: [术语词汇表](TERMINOLOGY_GLOSSARY.md) - 统一概念理解
+2. **项目概览**: 阅读本README了解整体框架
+3. **发展历程**: 查看 [logs/CHANGE_LOG.md](logs/CHANGE_LOG.md) 了解项目演进
 
-### 发展路线图
-- **短期(1-2月)**：完成基础优化和用户体验提升
-- **中期(3-6月)**：实现核心功能的产品化
-- **长期(6月+)**：构建完整的生态系统
+### 🔧 日常维护操作
+- **修改前必读**: [docs/SYSTEM_ARCHITECTURE_DESIGN.md](docs/SYSTEM_ARCHITECTURE_DESIGN.md)
+- **记录变更**: 重要修改需更新 [logs/CHANGE_LOG.md](logs/CHANGE_LOG.md)
+- **跟踪进度**: 参考 [logs/SHORT_TERM_OPTIMIZATION_TRACKING.md](logs/SHORT_TERM_OPTIMIZATION_TRACKING.md)
+
+### 📈 项目发展规划
+- **短期目标**: [改进计划](logs/IMPROVEMENT_PLAN.md)
+- **长期愿景**: [基础设施评估](logs/INFRASTRUCTURE_ASSESSMENT.md)
 
 ## 贡献和参与
 

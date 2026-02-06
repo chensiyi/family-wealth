@@ -49,22 +49,22 @@
 - **核心诉求**：不仅是理论，更要包含AI内容风控、防诈尽调、地缘风险应对等实战模块。
 
 ### Phase 2: 系统闭环构建 (System Loop)
-- **情报系统 (Battle Sandbox)**：不仅是看新闻，而是要建立“底牌透视”能力，像战场沙盘一样监控对手方。
-- **行为体系 (Execution Engine)**：在投资边界内建立高效可靠的行动SOP，引入 OODA 循环，确保知行合一。
-- **运行说明书**：将理念串联成一套可运行的系统，而非碎片化的知识点。
+- **[情报系统](09-intelligence-system.md) (Battle Sandbox)**：不仅是看新闻，而是要建立"底牌透视"能力，像战场沙盘一样监控对手方。
+- **[行为体系](10-action-system.md) (Execution Engine)**：在投资边界内建立高效可靠的行动SOP，引入 [OODA 循环](10-action-system.md#1-决策机制ooda-循环)，确保知行合一。
+- **[运行说明书](11-operating-manual.md)**：将理念串联成一套可运行的系统，而非碎片化的知识点。
 
 ### Phase 3: 大师理论工程化 (Engineering Theories)
-- **理论整合**：引入 Markowitz (有效前沿)、Dalio (全天候)、Taleb (反脆弱)、Shiller (非理性繁荣) 等大师模型。
+- **理论整合**：引入 [Markowitz 现代投资组合理论](15-master-theories.md#1-结构稳定性组件-the-chassis) (有效前沿)、[Dalio 全天候策略](15-master-theories.md#1-结构稳定性组件-the-chassis) (全天候底仓)、[Taleb 反脆弱理论](15-master-theories.md#2-安全与反脆弱组件-safety--antifragility) (杠铃策略)、[Shiller 行为金融学](15-master-theories.md#4-市场情绪与估值导航组件-market-sentiment--valuation-navigation) (非理性繁荣) 等大师模型。
 - **核心要求**：
-    - **拒绝伪专业**：不要堆砌术语，要直观、可操作（如“四季模型”替代复杂的数学图表）。
-    - **工程化落地**：将理论转化为组件（底盘、气囊、导航仪、引擎），而非教科书式的陈述。
+    - **拒绝伪专业**：不要堆砌术语，要直观、可操作（如"四季模型"替代复杂的数学图表）。
+    - **工程化落地**：将理论转化为组件（[底盘](15-master-theories.md#1-结构稳定性组件-the-chassis)、[气囊](15-master-theories.md#3-导航与预警组件-navigation--early-warning)、[导航仪](15-master-theories.md#4-市场情绪与估值导航组件-market-sentiment--valuation-navigation)、[引擎](15-master-theories.md#2-安全与反脆弱组件-safety--antifragility)），而非教科书式的陈述。
 
 ### Phase 4: 历史观重塑 (History as OS)
-- **核心洞察**：历史不是年代堆砌，而是“资本操作系统”的迭代（暴力→契约→信用→数据）。
+- **核心洞察**：历史不是年代堆砌，而是"资本操作系统"的迭代（暴力→契约→[信用](TERMINOLOGY_GLOSSARY.md#信用货币-credit-money)→数据）。
 - **关键认知**：
-    - **流动性**是权力的天敌。
+    - **[流动性](TERMINOLOGY_GLOSSARY.md#流动性风险-liquidity-risk)**是权力的天敌。
     - **法律结构**优于资产选择。
-    - 在信用货币时代，**现金是垃圾**，央行是最终对手盘。
+    - 在[信用货币](TERMINOLOGY_GLOSSARY.md#信用货币-credit-money)时代，**现金是垃圾**，央行是最终对手盘。
     - **合规**是数字时代的生存前提。
 
 ### Phase 5: 创始人红队测试 (Red Teaming)

@@ -14,14 +14,14 @@
 | :--- | :--- | :--- | :--- |
 | **春：复苏/增长** (Growth ↑, Inflation ↓) | 企业盈利改善，流动性充裕 | **股票** (权益类) | 国债 (避险需求下降) |
 | **夏：过热/通胀** (Growth ↑, Inflation ↑) | 需求过旺，物价飞涨 | **大宗商品/黄金** | 长期债券 (收益率被通胀吞噬) |
-| **秋：滞胀** (Growth ↓, Inflation ↑) | 经济停滞，物价仍高 (最难受的时期) | **现金/TIPS** (抗通胀债) | 股票 (盈利杀) & 债券 (估值杀) |
+| **秋：滞胀** (Growth ↓, Inflation ↑) | 经济停滞，物价仍高 ([滞胀](TERMINOLOGY_GLOSSARY.md#明斯基时刻-minsky-moment)最难受的时期) | **现金/TIPS** (抗通胀债) | 股票 (盈利杀) & 债券 (估值杀) |
 | **冬：衰退/通缩** (Growth ↓, Inflation ↓) | 需求萎缩，信用崩塌 | **长期国债** (央行降息) | 股票 & 商品 |
 
 ---
 
-## 2. 全天候底仓的标准配置 (The Baseline)
+## 2. [全天候底仓](TERMINOLOGY_GLOSSARY.md#全天候底仓-all-weather-core)的标准配置 (The Baseline)
 
-为了应对未来可能出现的任何一种气候，我们的“底盘”必须包含能适应所有气候的资产。Ray Dalio 的建议配置如下：
+为了应对未来可能出现的任何一种气候，我们的"底盘"必须包含能适应所有气候的资产。[Ray Dalio](15-master-theories.md#1-结构稳定性组件-the-chassis) 的建议配置如下：
 
 ### 基础比例 (Risk Parity)
 *   **30% 全球股票**：应对“春/夏” (增长期)。
@@ -39,13 +39,13 @@
 虽然全天候底仓旨在“躺平”，但结合 L3 情报系统的“导航仪”，我们可以进行适度的战术调整 (Tactical Asset Allocation)。
 
 ### 调整规则
-我们不赌方向，只根据**极端偏差**进行微调。
+我们不赌方向，只根据**极端偏差**进行微调。这些调整信号来源于[情报系统](09-intelligence-system.md)L3层级的监测。
 
 #### A. 增长维度调整
-- **当 Shiller CAPE > 30 (股市极度高估)**：
+- **当 [Shiller CAPE](15-master-theories.md#4-市场情绪与估值导航组件-market-sentiment--valuation-navigation) > 30 (股市极度高估)**：
     - **动作**：将股票仓位从 30% 下调至 20%。
     - **去向**：资金移入短债/现金。
-- **当 Shiller CAPE < 15 (股市极度低估)**：
+- **当 [Shiller CAPE](15-master-theories.md#4-市场情绪与估值导航组件-market-sentiment--valuation-navigation) < 15 (股市极度低估)**：
     - **动作**：将股票仓位从 30% 上调至 40%。
     - **来源**：从债券端抽调资金。
 
