@@ -5,6 +5,51 @@
 
 ---
 
+## 2026年2月11日 - 05章重构文件清理和导航修复
+
+### 主要变更
+1. **遗留文件清理**
+   - 删除重构遗留文件 `05-system-design-module.md`
+   - 该文件为05章重构前的版本，内容已被拆分到新的独立文件中
+
+2. **导航链接修复**
+   - 更新14个核心文档中的章节引用链接
+   - 将所有指向 `05-system-design-module.md` 的链接替换为正确的文件：
+     * `05-system-design-principles.md`（体系设计原则）
+     * `05+-master-case-studies.md`（大师案例借鉴）
+   - 修复章节间上下文导航关系
+
+3. **目录结构验证**
+   - 确认当前05章相关文件结构正确：
+     * `05-system-design-principles.md` - 体系设计原则
+     * `05+-master-case-studies.md` - 大师案例借鉴
+   - 验证所有交叉引用的准确性和完整性
+
+### 影响范围
+- **文档一致性**: 消除重构遗留的冗余文件，确保文档结构清晰
+- **导航准确性**: 修复所有损坏的内部链接，改善用户体验
+- **内容完整性**: 确保读者能够正确访问相关章节内容
+- **维护便利性**: 建立清晰的文档组织结构，便于后续维护
+
+### 修复文件列表
+- `TERMINOLOGY_GLOSSARY.md`
+- `14-index-and-update-rules.md`
+- `11-operating-manual.md`
+- `07-asset-correlation-matrix.md`
+- `06-family-governance.md`
+- `15-master-theories.md`
+- `09-intelligence-system.md`
+- `03-actors-and-tiers.md`
+- `01-framework-overview.md`
+- `12-historical-lessons-and-blindspots.md`
+- `08-cycle-configuration.md`
+- `13-positioning-and-meaning.md`
+- `10-action-system.md`
+- `04-game-mechanics-and-strategy.md`
+- `02-historical-structure.md`
+
+---
+
 ## 2026年2月11日 - Python模块导入语法修复和README一致性检查
 
 ### 主要变更

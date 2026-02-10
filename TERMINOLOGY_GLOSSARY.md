@@ -72,7 +72,7 @@
 - 资产保护法律环境
 - 政治稳定性评估
 - 跨境传承便利性
-**相关章节**: [05 体系设计模块](05-system-design-module.md)、[06 家族治理与传承](06-family-governance.md)
+**相关章节**: [05 体系设计原则](05-system-design-principles.md)、[05+ 大师案例借鉴](05+-master-case-studies.md)、[06 家族治理与传承](06-family-governance.md)
 
 #### 家族宪章 (Family Charter)
 **定义**: 家族成员共同制定的价值观、原则和行为准则文件

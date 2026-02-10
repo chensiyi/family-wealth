@@ -146,7 +146,7 @@
 - S-01 结构优先（风险隔离与架构）
   - 目标：先保栖息地，分离经营/投资/消费风险
   - 动作：公司/信托/保险载体、账户分层、文档与权限治理
--  - 引用：[05 体系设计模块](05-system-design-module.md)、[06 家族治理](06-family-governance.md)
+-  - 引用：[05 体系设计原则](05-system-design-principles.md)、[05+ 大师案例借鉴](05+-master-case-studies.md)、[06 家族治理](06-family-governance.md)
 - S-02 全天候底仓（组合中枢与风险平价）
   - 目标：任何周期下维持基本可用的购买力与现金流
   - 动作：股票/债券/商品/现金权重与再平衡频率
@@ -170,7 +170,7 @@
 - S-07 法域与托管（身份与资产所在地）
   - 目标：降低可冻结比例，提升跨法域可取用性
   - 动作：税务居民规划、资产所在地分散、双托管与备份账户
--  - 引用：[05 体系设计模块](05-system-design-module.md)、[06 家族治理](06-family-governance.md)、[11 运行说明书](11-operating-manual.md)
+-  - 引用：[05 体系设计原则](05-system-design-principles.md)、[05+ 大师案例借鉴](05+-master-case-studies.md)、[06 家族治理](06-family-governance.md)、[11 运行说明书](11-operating-manual.md)
 - S-08 极端事件预案（撤退与回滚）
   - 目标：在最坏情形下存活并恢复
   - 动作：账户冻结剧本、平台迁移清单、通讯与证据备份
@@ -197,7 +197,8 @@
   - [02 历史构成](02-historical-structure.md)
   - [03 参与者与层级](03-actors-and-tiers.md)
   - [04 游戏机制与策略](04-game-mechanics-and-strategy.md)
-  - [05 体系设计模块](05-system-design-module.md)
+  - [05 体系设计原则](05-system-design-principles.md)
+  - [05+ 大师案例借鉴](05+-master-case-studies.md)
   - [06 家族治理与传承](06-family-governance.md)
   - [07 资产相关性矩阵](07-asset-correlation-matrix.md)
   - [08 周期配置与动态调整](08-cycle-configuration.md)
@@ -209,4 +210,4 @@
   - [14 索引与更新规则](14-index-and-update-rules.md)
   - [15 大师理论基石](15-master-theories.md)
 
-上一章：[03 参与者与层级](03-actors-and-tiers.md) · 下一章：[05 体系设计模块](05-system-design-module.md)
+上一章：[03 参与者与层级](03-actors-and-tiers.md) · 下一章：[05 体系设计原则](05-system-design-principles.md)
