@@ -22,10 +22,7 @@
 
 ## 评估和分析报告
 
-### 📊 [INFRASTRUCTURE_ASSESSMENT.md](INFRASTRUCTURE_ASSESSMENT.md) - 基础设施评估
-**重要程度**: 中
-**更新频率**: 每季度或重大结构调整后更新
-**内容**: 项目基础设施完善程度评估和改进建议
+
 
 ### 📊 [PROJECT_ASSESSMENT_REPORT.md](PROJECT_ASSESSMENT_REPORT.md) - 项目评估报告
 **重要程度**: 中
@@ -44,9 +41,8 @@
 3. 日常优化跟踪使用 [SHORT_TERM_OPTIMIZATION_TRACKING.md](SHORT_TERM_OPTIMIZATION_TRACKING.md)
 
 ### 对于维护者
-1. 定期review [INFRASTRUCTURE_ASSESSMENT.md](INFRASTRUCTURE_ASSESSMENT.md)
-2. 重大决策参考 [PROJECT_ASSESSMENT_REPORT.md](PROJECT_ASSESSMENT_REPORT.md)
-3. 确保所有变更都在 [CHANGE_LOG.md](CHANGE_LOG.md) 中有记录
+1. 重大决策参考 [PROJECT_ASSESSMENT_REPORT.md](PROJECT_ASSESSMENT_REPORT.md)
+2. 确保所有变更都在 [CHANGE_LOG.md](CHANGE_LOG.md) 中有记录
 
 ## 维护规范
 

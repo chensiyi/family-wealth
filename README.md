@@ -36,6 +36,7 @@
 - [关键流程可视化图表](VISUAL_FLOWCHARTS.md)
 - [市场重要参与者数据库](references/MARKET_PARTICIPANTS_DATABASE.md)
 - [投资大师复盘演练基础](references/MASTER_INVESTOR_REVIEW_BASE.md)
+- [经济生态系统资本流动分析](references/ECOSYSTEM_ANALYSIS_CAPITAL_FLOWS.md)
 - [改进计划](logs/IMPROVEMENT_PLAN.md)
 
 ## 主线逻辑与快速导航
@@ -56,35 +57,38 @@
 - 每次重大修改前必须阅读和更新 docs/SYSTEM_ARCHITECTURE_DESIGN.md
 - 更新时，建议通过ai助手阅读相关规则，再进行文档修改和自动化验证。
 
-### 工程记录
-- **统一修改日志**：`logs/CHANGE_LOG.md`
-- **改进计划**：`logs/IMPROVEMENT_PLAN.md`
-- **短期优化追踪**：`logs/SHORT_TERM_OPTIMIZATION_TRACKING.md`
-- **基础设施评估**：`logs/INFRASTRUCTURE_ASSESSMENT.md`
-- **会话摘要记录**：`logs/SESSION_SUMMARIES.md`
-- **架构设计文档**：`docs/SYSTEM_ARCHITECTURE_DESIGN.md`
-- **日志目录索引**：`logs/README.md` (详细使用说明)
+### 核心文档索引
 
-### 附件文件
-- **术语词汇表**：`TERMINOLOGY_GLOSSARY.md`
-- **流程可视化图表**：`VISUAL_FLOWCHARTS.md`
-- **市场参与者数据库**：`references/MARKET_PARTICIPANTS_DATABASE.md`
+**🔧 工程管理文档**
+- [修改日志](logs/CHANGE_LOG.md) - 项目变更历史记录
+- [改进计划](logs/IMPROVEMENT_PLAN.md) - 待办任务和发展规划
+- [优化追踪](logs/SHORT_TERM_OPTIMIZATION_TRACKING.md) - 短期任务进度管理
+- [会话摘要](logs/SESSION_SUMMARIES.md) - 会话要点记录
+- [架构设计](docs/SYSTEM_ARCHITECTURE_DESIGN.md) - 系统设计规范
+- [日志索引](logs/README.md) - 详细使用说明和维护规范
 
-## 日常使用和维护指南
+**📚 核心参考资料**
+- [术语词汇表](TERMINOLOGY_GLOSSARY.md) - 统一概念定义
+- [流程图表](VISUAL_FLOWCHARTS.md) - 关键流程可视化
+- [市场数据库](references/MARKET_PARTICIPANTS_DATABASE.md) - 重要参与者信息
+- [投资复盘](references/MASTER_INVESTOR_REVIEW_BASE.md) - 大师案例分析
+- [生态系统分析](references/ECOSYSTEM_ANALYSIS_CAPITAL_FLOWS.md) - 资本流动研究
 
-### 📚 新用户入门
-1. **首选阅读**: [术语词汇表](TERMINOLOGY_GLOSSARY.md) - 统一概念理解
-2. **项目概览**: 阅读本README了解整体框架
-3. **发展历程**: 查看 [logs/CHANGE_LOG.md](logs/CHANGE_LOG.md) 了解项目演进
+## 使用指南
 
-### 🔧 日常维护操作
-- **修改前必读**: [docs/SYSTEM_ARCHITECTURE_DESIGN.md](docs/SYSTEM_ARCHITECTURE_DESIGN.md)
-- **记录变更**: 重要修改需更新 [logs/CHANGE_LOG.md](logs/CHANGE_LOG.md)
-- **跟踪进度**: 参考 [logs/SHORT_TERM_OPTIMIZATION_TRACKING.md](logs/SHORT_TERM_OPTIMIZATION_TRACKING.md)
+### 📚 新手入门
+1. 首先阅读 [术语词汇表](TERMINOLOGY_GLOSSARY.md) 统一概念理解
+2. 浏览本README了解项目整体框架
+3. 查看 [修改日志](logs/CHANGE_LOG.md) 了解发展历程
 
-### 📈 项目发展规划
-- **短期目标**: [改进计划](logs/IMPROVEMENT_PLAN.md)
-- **长期愿景**: [基础设施评估](logs/INFRASTRUCTURE_ASSESSMENT.md)
+### 🔧 日常维护
+- 修改前必读 [架构设计文档](docs/SYSTEM_ARCHITECTURE_DESIGN.md)
+- 重要变更需更新 [修改日志](logs/CHANGE_LOG.md)
+- 跟踪进度参考 [优化追踪](logs/SHORT_TERM_OPTIMIZATION_TRACKING.md)
+
+### 🎯 发展规划
+- 短期目标查看 [改进计划](logs/IMPROVEMENT_PLAN.md)
+- 长期规划参考 [架构设计](docs/SYSTEM_ARCHITECTURE_DESIGN.md)
 
 ## 贡献和参与
 
