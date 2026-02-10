@@ -13,9 +13,9 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from sandbox-system.analysis-engine.database_accessor import DatabaseAccessor
-from sandbox-system.dashboard.lightweight_data_generator import DataGenerator
-from sandbox-system.utils.sandbox_observer import SandboxObserver
+from analysis_engine.database_accessor import DatabaseAccessor
+from dashboard.lightweight_data_generator import DataGenerator
+from utils.sandbox_observer import SandboxObserver
 
 def main():
     """主函数"""

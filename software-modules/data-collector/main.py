@@ -13,9 +13,9 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from data-collector.storage.initialize_professional_database import ProfessionalFinanceDatabase
-from data-collector.data-sources.professional_data_collector import ProfessionalDataCollector
-from data-collector.processors.financial_data_analyzer import FinancialDataAnalyzer
+from storage.initialize_professional_database import ProfessionalFinanceDatabase
+from data_sources.professional_data_collector import ProfessionalDataCollector
+from processors.financial_data_analyzer import FinancialDataAnalyzer
 
 def main():
     """主函数"""
