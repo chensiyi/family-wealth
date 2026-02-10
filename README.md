@@ -1,5 +1,7 @@
 # 家族资产打理：纯粹知识体系项目
 
+> **项目摘要**: 本项目致力于构建系统化的家族财富管理体系，通过五层架构（战略层、结构层、配置层、执行层、纠偏层）为普通家庭和中小家族提供可持续的安全边界与操作路径。核心理念是在既定秩序中寻找生存空间，通过知识框架、操作清单和更新规则的有机结合，实现财富的系统化守护与传承。
+
 - 主题：在信用货币与传统资产长期贬值的世界里，系统化守住与传承家庭财富
 - 立场：不试图改变外部环境，专注在既定秩序中寻找可持续的安全边界与操作路径
 - 方法：以「知识框架 + 操作清单 + 更新规则」为核心的动态文档
@@ -15,7 +17,9 @@
 - [02 历史构成](02-historical-structure.md)
 - [03 参与者与层级](03-actors-and-tiers.md)
 - [04 游戏机制与策略（核心策略模块总章）](04-game-mechanics-and-strategy.md)
-- [05 家族资产管理体系设计模块](05-system-design-module.md)
+- [04+ 家族办公室作用](04+-family-office-role.md)
+- [05 体系设计原则](05-system-design-principles.md)
+- [05+ 大师案例借鉴](05+-master-case-studies.md)
 - [06 家族治理与传承](06-family-governance.md)
 - [07 资产相关性矩阵](07-asset-correlation-matrix.md)
 - [08 周期配置与动态调整](08-cycle-configuration.md)
@@ -30,11 +34,13 @@
 ## 附件（术语与可视化图表）
 - [术语词汇表](TERMINOLOGY_GLOSSARY.md) ← **建议优先阅读**
 - [关键流程可视化图表](VISUAL_FLOWCHARTS.md)
+- [市场重要参与者数据库](references/MARKET_PARTICIPANTS_DATABASE.md)
+- [投资大师复盘演练基础](references/MASTER_INVESTOR_REVIEW_BASE.md)
 - [改进计划](logs/IMPROVEMENT_PLAN.md)
 
 ## 主线逻辑与快速导航
 - 战略层（Why）：跨周期的安全边界与目标函数 → [01 框架总览](01-framework-overview.md)、[02 历史构成](02-historical-structure.md)
-- 结构层（Where）：法域、身份与载体选择，风险隔离 → [05 体系设计模块](05-system-design-module.md)、[06 家族治理与传承](06-family-governance.md)
+- 结构层（Where）：法域、身份与载体选择，风险隔离 → [05 体系设计原则](05-system-design-principles.md)、[06 家族治理与传承](06-family-governance.md)
 - 配置层（What）：底仓与权重、相关性与调仓规则 → [07 资产相关性矩阵](07-asset-correlation-matrix.md)、[08 周期配置与动态调整](08-cycle-configuration.md)
 - 执行层（How）：情报→行为→运行说明书闭环 → [09 情报系统](09-intelligence-system.md)、[10 行为体系](10-action-system.md)、[11 运行说明书](11-operating-manual.md)
 - 纠偏层（Fix）：历史盲点与红旗侦测、熔断回滚 → [12 历史反思与盲点](12-historical-lessons-and-blindspots.md)
@@ -55,12 +61,15 @@
 - **改进计划**：`logs/IMPROVEMENT_PLAN.md`
 - **短期优化追踪**：`logs/SHORT_TERM_OPTIMIZATION_TRACKING.md`
 - **基础设施评估**：`logs/INFRASTRUCTURE_ASSESSMENT.md`
+- **会话摘要记录**：`logs/SESSION_SUMMARIES.md`
 - **架构设计文档**：`docs/SYSTEM_ARCHITECTURE_DESIGN.md`
 - **日志目录索引**：`logs/README.md` (详细使用说明)
 
 ### 附件文件
 - **术语词汇表**：`TERMINOLOGY_GLOSSARY.md`
 - **流程可视化图表**：`VISUAL_FLOWCHARTS.md`
+- **市场参与者数据库**：`references/MARKET_PARTICIPANTS_DATABASE.md`
+- **生态系统分析**：`references/ECOSYSTEM_ANALYSIS_CAPITAL_FLOWS.md`
 
 ## 日常使用和维护指南
 
@@ -86,6 +95,6 @@
 - 参与讨论和经验分享
 
 ## 免责声明
-- 本项目仅用于教育研究与认知建设，不提供任何投资、税务或法律建议
+- 本项目仅用于**教育研究**与**认知建设**，不提供任何投资、税务或法律建议
 - 实操前务必咨询合规的专业人士
 
