@@ -69,7 +69,6 @@
 - **术语词汇表**：`TERMINOLOGY_GLOSSARY.md`
 - **流程可视化图表**：`VISUAL_FLOWCHARTS.md`
 - **市场参与者数据库**：`references/MARKET_PARTICIPANTS_DATABASE.md`
-- **生态系统分析**：`references/ECOSYSTEM_ANALYSIS_CAPITAL_FLOWS.md`
 
 ## 日常使用和维护指南
 
