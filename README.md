@@ -97,6 +97,14 @@
 - Fork项目贡献代码或文档
 - 参与讨论和经验分享
 
+## 仓库同步
+
+本项目同时维护两个远程仓库：
+- **Gitee**：https://gitee.com/chensiyi1994/family-wealth
+- **GitHub**：https://github.com/chensiyi/family-wealth
+
+使用 `scripts/push_both_repos.ps1` 脚本可同时向两个仓库推送变更。
+
 ## 免责声明
 - 本项目仅用于**教育研究**与**认知建设**，不提供任何投资、税务或法律建议
 - 实操前务必咨询合规的专业人士
