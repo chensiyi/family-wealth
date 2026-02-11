@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据加载测试</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div style="padding: 20px;">
+        <h1>📊 数据加载测试</h1>
+        <div id="status">正在加载数据...</div>
+        <div id="data-preview" style="margin-top: 20px;"></div>
+        <canvas id="testChart" width="400" height="200"></canvas>
+    </div>
+
+    <script>
+        async function testDataLoading() {
+            const statusDiv = document.getElementById('status');
+            const previewDiv = document.getElementById('data-preview');
+            
+            try {
+                statusDiv.innerHTML = '🔄 正在请求数据...';
+                
+                // 测试数据文件访问
+                const response = await fetch('financial_analysis_data.json');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                statusDiv.innerHTML = `✅ 数据加载成功！状态码: ${response.status}`;
+                
+                // 显示数据预览
+                previewDiv.innerHTML = `
+                    <h3>数据预览:</h3>
+                    <p><strong>生成时间:</strong> ${data.metadata?.generated_at || '未知'}</p>
+                    <p><strong>数据期间:</strong> ${data.metadata?.period || '未知'}</p>
+                    <p><strong>利率数据点:</strong> ${data.interest_rates?.length || 0}</p>
+                    <p><strong>税收数据点:</strong> ${data.tax_rates?.length || 0}</p>
+                    <p><strong>投资组合数据点:</strong> ${data.portfolio_holdings?.length || 0}</p>
+                    <p><strong>通胀数据点:</strong> ${data.inflation_data?.length || 0}</p>
+                `;
+                
+                // 创建简单图表测试
+                if (data.interest_rates && data.interest_rates.length > 0) {
+                    createTestChart(data.interest_rates);
+                }
+                
+            } catch (error) {
+                statusDiv.innerHTML = `❌ 数据加载失败: ${error.message}`;
+                console.error('加载错误:', error);
+            }
+        }
+        
+        function createTestChart(data) {
+            const ctx = document.getElementById('testChart').getContext('2d');
+            
+            // 取前20个数据点进行测试
+            const sampleData = data.slice(0, 20);
+            
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: sampleData.map(d => d.date),
+                    datasets: [{
+                        label: '利率 (%)',
+                        data: sampleData.map(d => d.rate),
+                        borderColor: '#FF6B6B',
+                        backgroundColor: 'rgba(255, 107, 107, 0.1)',
+                        borderWidth: 2,
+                        pointRadius: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: '利率数据测试图表'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false
+                        }
+                    }
+                }
+            });
+        }
+        
+        // 页面加载完成后执行测试
+        document.addEventListener('DOMContentLoaded', testDataLoading);
+    </script>
+</body>
+</html>

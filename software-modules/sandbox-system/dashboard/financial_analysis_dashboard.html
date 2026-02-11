@@ -331,29 +331,53 @@
         // 初始化图表
         async function initializeDashboard() {
             try {
+                console.log('🚀 开始初始化仪表板...');
+                
                 // 加载分析数据
+                console.log('🔄 正在加载数据文件...');
                 const response = await fetch('financial_analysis_data.json');
+                console.log('📊 数据响应状态:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error(`数据加载失败: ${response.status} ${response.statusText}`);
+                }
+                
                 currentData = await response.json();
+                console.log('✅ 数据加载完成，数据结构:', Object.keys(currentData));
+                console.log('📈 利率数据点数:', currentData.interest_rates?.length);
+                console.log('💰 税收数据点数:', currentData.tax_rates?.length);
+                console.log('📊 投资组合数据点数:', currentData.portfolio_holdings?.length);
                 
                 // 隐藏加载提示，显示仪表板
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('dashboard').style.display = 'block';
                 
                 // 创建图表
+                console.log('📊 开始创建图表...');
                 createInterestRateChart();
                 createTaxRateChart();
                 createPortfolioChart();
                 createInflationChart();
                 
                 // 更新绩效指标
+                console.log('📈 更新绩效指标...');
                 updatePerformanceMetrics();
                 
                 // 显示危机分析
+                console.log('⚠️ 显示危机分析...');
                 displayCrisisAnalysis();
                 
+                console.log('🎉 仪表板初始化完成！');
+                
             } catch (error) {
-                console.error('数据加载失败:', error);
-                document.getElementById('loading').innerHTML = '数据加载失败，请稍后重试';
+                console.error('❌ 仪表板初始化失败:', error);
+                document.getElementById('loading').innerHTML = `
+                    <div style='text-align: center; color: white;'>
+                        <h2>❌ 数据加载失败</h2>
+                        <p>错误信息: ${error.message}</p>
+                        <p>请检查控制台获取详细信息</p>
+                    </div>
+                `;
             }
         }
         
