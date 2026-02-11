@@ -14,7 +14,13 @@ from datetime import datetime
 class MetadataDatabase:
     """元数据数据库管理器"""
     
-    def __init__(self, db_path: str = 'storage/metadata.db'):
+    def __init__(self, db_path: str = None):
+        if db_path is None:
+            # 使用相对于data-hub模块的路径
+            from pathlib import Path
+            module_dir = Path(__file__).parent
+            db_path = str(module_dir / 'metadata.db')
+        
         self.db_path = db_path
         self.connection = None
         self.logger = logging.getLogger(__name__)

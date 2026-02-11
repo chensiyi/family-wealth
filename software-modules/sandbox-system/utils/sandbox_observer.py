@@ -12,16 +12,32 @@ from typing import Dict, List, Tuple
 import os
 
 class SandboxObserver:
-    """沙盘观察器 - 提供多种观察视角"""
+    """沙盘观察器 - 提供多种观察视角
     
-    def __init__(self, db_path: str = 'sandbox_data.db'):
-        self.db_path = db_path
-        self.conn = sqlite3.connect(db_path)
-        self.setup_views()
+    注意：此版本已集成数据中台模块，优先使用数据中台获取数据
+    """
+    
+    def __init__(self, db_path: str = None, use_data_hub: bool = True):
+        self.use_data_hub = use_data_hub
+        
+        if use_data_hub:
+            # 使用数据中台适配器
+            from utils.data_hub_adapter import create_sandbox_data_adapter
+            self.data_adapter = create_sandbox_data_adapter()
+            self.db_conn = None
+        else:
+            # 使用传统数据库连接
+            import sqlite3
+            self.db_path = db_path or 'sandbox_data.db'
+            self.db_conn = sqlite3.connect(self.db_path)
+            self.setup_views()
     
     def setup_views(self):
-        """创建观察视图"""
-        cursor = self.conn.cursor()
+        """创建观察视图（传统模式）"""
+        if not self.db_conn:
+            return
+            
+        cursor = self.db_conn.cursor()
         
         # 创建参与者影响力排行榜视图
         cursor.execute('''
@@ -74,11 +90,59 @@ class SandboxObserver:
             GROUP BY p.participant_id
         ''')
         
-        self.conn.commit()
+        self.db_conn.commit()
     
     def get_ecosystem_overview(self) -> Dict:
         """生态系统概览 - 鸟瞰视角"""
-        cursor = self.conn.cursor()
+        if self.use_data_hub:
+            # 使用数据中台获取数据
+            return self._get_ecosystem_overview_from_data_hub()
+        else:
+            # 使用传统数据库
+            return self._get_ecosystem_overview_from_db()
+    
+    def _get_ecosystem_overview_from_data_hub(self) -> Dict:
+        """从数据中台获取生态系统概览"""
+        try:
+            # 获取市场数据作为基础
+            market_data = self.data_adapter.get_financial_data(
+                symbol='SPY',  # 使用标普500ETF作为市场代理
+                data_type='prices',
+                start_date='2020-01-01',
+                end_date='2024-12-31'
+            )
+            
+            # 获取经济指标
+            economic_data = self.data_adapter.get_economic_indicators(
+                indicators=['GDP', 'UNRATE', 'CPIAUCSL']
+            )
+            
+            # 模拟参与者统计数据（实际应用中应从数据中台获取）
+            total_participants = 50  # 模拟数据
+            total_events = 25       # 模拟数据
+            total_actions = 200     # 模拟数据
+            
+            return {
+                'overview': {
+                    'total_participants': total_participants,
+                    'total_events': total_events,
+                    'total_actions': total_actions,
+                    'data_source': 'data_hub'
+                },
+                'market_data': market_data if market_data['success'] else None,
+                'economic_indicators': economic_data if economic_data['success'] else None,
+                'timestamp': datetime.now().isoformat()
+            }
+            
+        except Exception as e:
+            return {
+                'error': f'数据中台获取失败: {str(e)}',
+                'data_source': 'data_hub'
+            }
+    
+    def _get_ecosystem_overview_from_db(self) -> Dict:
+        """从传统数据库获取生态系统概览"""
+        cursor = self.db_conn.cursor()
         
         # 参与者统计
         cursor.execute('SELECT COUNT(*) FROM participants_profile')
@@ -115,7 +179,8 @@ class SandboxObserver:
             'overview': {
                 'total_participants': total_participants,
                 'total_events': total_events,
-                'total_actions': total_actions
+                'total_actions': total_actions,
+                'data_source': 'local_db'
             },
             'role_distribution': [
                 {
