@@ -13,21 +13,32 @@ from typing import Dict, List, Optional, Any
 # 延迟导入，避免循环依赖
 def get_data_hub():
     """延迟获取数据中台实例"""
-    # 添加数据中台模块路径（相对于项目根目录）
-    project_root = Path(__file__).parent.parent.parent
-    data_hub_path = project_root / 'data-hub'
+    # 使用绝对路径确保正确性
+    import os
+    # 获取当前文件的绝对路径
+    current_file = os.path.abspath(__file__)
+    # 向上三级到达software-modules目录
+    # utils -> sandbox-system -> software-modules
+    software_modules_dir = os.path.dirname(os.path.dirname(os.path.dirname(current_file)))
+    # 构建data-hub路径
+    data_hub_path = os.path.join(software_modules_dir, 'data-hub')
     
-    if str(data_hub_path) not in sys.path:
-        sys.path.insert(0, str(data_hub_path))
+    if data_hub_path not in sys.path:
+        sys.path.insert(0, data_hub_path)
     
     # 直接导入而不是通过main模块
     import importlib.util
-    main_path = data_hub_path / 'main.py'
+    main_path = os.path.join(data_hub_path, 'main.py')
     
-    if not main_path.exists():
+    if not os.path.exists(main_path):
+        # 调试信息
+        print(f"当前文件路径: {current_file}")
+        print(f"Software modules目录: {software_modules_dir}")
+        print(f"Data-hub路径: {data_hub_path}")
+        print(f"Main.py路径: {main_path}")
         raise FileNotFoundError(f"数据中台主文件不存在: {main_path}")
     
-    spec = importlib.util.spec_from_file_location("data_hub_main", str(main_path))
+    spec = importlib.util.spec_from_file_location("data_hub_main", main_path)
     data_hub_module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(data_hub_module)
     
