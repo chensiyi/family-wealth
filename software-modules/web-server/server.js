@@ -87,6 +87,14 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
+app.get('/professional', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/professional_trading.html'));
+});
+
+app.get('/demo', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/demo.html'));
+});
+
 // 启动服务器
 app.listen(PORT, () => {
     console.log(`🚀 家族财富管理系统服务器启动`);

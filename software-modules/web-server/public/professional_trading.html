@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>专业股票交易模拟器 - 家族财富管理系统</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --success-color: #198754;
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
+            --dark-bg: #121826;
+            --card-bg: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .navbar {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid #334155;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            color: var(--text-primary);
+        }
+        
+        .card-header {
+            background-color: rgba(13, 110, 253, 0.1);
+            border-bottom: 1px solid #334155;
+            font-weight: 600;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), #0b5ed7);
+            border: none;
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, var(--success-color), #157347);
+            border: none;
+        }
+        
+        .btn-danger {
+            background: linear-gradient(135deg, var(--danger-color), #bb2d3b);
+            border: none;
+        }
+        
+        .table {
+            color: var(--text-primary);
+        }
+        
+        .table th {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-color: #334155;
+        }
+        
+        .table td {
+            border-color: #334155;
+        }
+        
+        .price-up {
+            color: var(--success-color);
+        }
+        
+        .price-down {
+            color: var(--danger-color);
+        }
+        
+        .form-control, .form-select {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            color: var(--text-primary);
+        }
+        
+        .form-control:focus, .form-select:focus {
+            background-color: #1e293b;
+            border-color: var(--primary-color);
+            color: var(--text-primary);
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+        
+        .trading-terminal {
+            height: 500px;
+            overflow-y: auto;
+        }
+        
+        .order-book {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .trade-history {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .ticker-display {
+            background-color: #000;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            padding: 10px;
+            border-radius: 8px;
+            height: 100px;
+            overflow-y: auto;
+        }
+        
+        .blink {
+            animation: blink-animation 1s steps(5, start) infinite;
+        }
+        
+        @keyframes blink-animation {
+            to {
+                visibility: hidden;
+            }
+        }
+        
+        .market-depth-chart {
+            height: 200px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-end;
+            padding: 10px;
+        }
+        
+        .bid-level, .ask-level {
+            flex: 1;
+            margin: 0 2px;
+            text-align: center;
+        }
+        
+        .bid-bar {
+            background: linear-gradient(to top, #198754, #20c997);
+            width: 100%;
+        }
+        
+        .ask-bar {
+            background: linear-gradient(to top, #dc3545, #fd7e14);
+            width: 100%;
+        }
+        
+        .portfolio-summary {
+            background: linear-gradient(135deg, rgba(13, 110, 253, 0.1), rgba(13, 110, 253, 0.05));
+            border: 1px solid rgba(13, 110, 253, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-chart-line me-2"></i>
+                <strong>专业股票交易模拟器</strong>
+            </a>
+            <div class="d-flex align-items-center">
+                <div class="me-3">
+                    <span class="badge bg-success">实时模式</span>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-user me-1"></i>账户
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>账户设置</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-history me-2"></i>交易历史</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>退出</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-3">
+        <!-- 顶部统计栏 -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card portfolio-summary">
+                    <div class="card-body text-center">
+                        <h6 class="card-subtitle mb-2 text-muted">总资产</h6>
+                        <h3 class="card-title price-up" id="totalValue">¥1,234,567</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card portfolio-summary">
+                    <div class="card-body text-center">
+                        <h6 class="card-subtitle mb-2 text-muted">现金余额</h6>
+                        <h3 class="card-title" id="cashBalance">¥876,543</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card portfolio-summary">
+                    <div class="card-body text-center">
+                        <h6 class="card-subtitle mb-2 text-muted">持仓市值</h6>
+                        <h3 class="card-title price-up" id="positionsValue">¥358,024</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card portfolio-summary">
+                    <div class="card-body text-center">
+                        <h6 class="card-subtitle mb-2 text-muted">浮动盈亏</h6>
+                        <h3 class="card-title price-up" id="unrealizedPnl">+¥24,567</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- 左侧：交易终端 -->
+            <div class="col-md-8">
+                <!-- 股票选择和行情显示 -->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fas fa-search me-2"></i>股票搜索与行情
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="stockSearch" placeholder="输入股票代码或名称">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h5 class="mb-0" id="currentSymbol">NVDA</h5>
+                                        <small class="text-muted">英伟达</small>
+                                    </div>
+                                    <div class="text-end">
+                                        <h4 class="mb-0 price-up" id="currentPrice">¥875.28</h4>
+                                        <small class="price-up" id="priceChange">+¥25.28 (+2.97%)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 市场深度 -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6 class="mb-2">买盘 (Bid)</h6>
+                                <div class="order-book bg-dark p-2 rounded" id="bidBook">
+                                    <div class="d-flex justify-content-between py-1 border-bottom border-secondary">
+                                        <span>875.25</span>
+                                        <span>100</span>
+                                        <span class="text-success">¥87,525</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between py-1 border-bottom border-secondary">
+                                        <span>875.20</span>
+                                        <span>200</span>
+                                        <span class="text-success">¥175,040</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between py-1 border-bottom border-secondary">
+                                        <span>875.15</span>
+                                        <span>150</span>
+                                        <span class="text-success">¥131,273</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="mb-2">卖盘 (Ask)</h6>
+                                <div class="order-book bg-dark p-2 rounded" id="askBook">
+                                    <div class="d-flex justify-content-between py-1 border-bottom border-secondary">
+                                        <span>875.30</span>
+                                        <span>120</span>
+                                        <span class="text-danger">¥105,036</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between py-1 border-bottom border-secondary">
+                                        <span>875.35</span>
+                                        <span>80</span>
+                                        <span class="text-danger">¥70,028</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between py-1 border-bottom border-secondary">
+                                        <span>875.40</span>
+                                        <span>180</span>
+                                        <span class="text-danger">¥157,572</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 交易面板 -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-exchange-alt me-2"></i>交易终端
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <!-- 买入面板 -->
+                            <div class="col-md-6">
+                                <div class="border rounded p-3 h-100" style="border-color: #198754 !important;">
+                                    <h5 class="text-success mb-3">
+                                        <i class="fas fa-arrow-up me-2"></i>买入
+                                    </h5>
+                                    <div class="mb-3">
+                                        <label class="form-label">委托价格</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="buyPrice" value="875.28" step="0.01">
+                                            <button class="btn btn-outline-success" type="button" onclick="setMarketPrice('buy')">市价</button>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">委托数量</label>
+                                        <input type="number" class="form-control" id="buyQuantity" placeholder="买入数量">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">交易金额</label>
+                                        <input type="text" class="form-control" id="buyAmount" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">订单类型</label>
+                                        <select class="form-select" id="buyOrderType">
+                                            <option value="limit">限价单</option>
+                                            <option value="market">市价单</option>
+                                            <option value="stop">止损单</option>
+                                        </select>
+                                    </div>
+                                    <button class="btn btn-success w-100" onclick="executeBuy()">
+                                        <i class="fas fa-shopping-cart me-2"></i>买入股票
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- 卖出面板 -->
+                            <div class="col-md-6">
+                                <div class="border rounded p-3 h-100" style="border-color: #dc3545 !important;">
+                                    <h5 class="text-danger mb-3">
+                                        <i class="fas fa-arrow-down me-2"></i>卖出
+                                    </h5>
+                                    <div class="mb-3">
+                                        <label class="form-label">委托价格</label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" id="sellPrice" value="875.28" step="0.01">
+                                            <button class="btn btn-outline-danger" type="button" onclick="setMarketPrice('sell')">市价</button>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">委托数量</label>
+                                        <select class="form-select" id="sellPositionSelect" onchange="updateSellQuantity()">
+                                            <option value="">选择持仓股票</option>
+                                        </select>
+                                        <input type="number" class="form-control mt-2" id="sellQuantity" placeholder="卖出数量">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">交易金额</label>
+                                        <input type="text" class="form-control" id="sellAmount" readonly>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">订单类型</label>
+                                        <select class="form-select" id="sellOrderType">
+                                            <option value="limit">限价单</option>
+                                            <option value="market">市价单</option>
+                                            <option value="stop">止损单</option>
+                                        </select>
+                                    </div>
+                                    <button class="btn btn-danger w-100" onclick="executeSell()">
+                                        <i class="fas fa-money-bill-wave me-2"></i>卖出股票
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧：持仓和信息面板 -->
+            <div class="col-md-4">
+                <!-- 持仓列表 -->
+                <div class="card mb-3">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span><i class="fas fa-wallet me-2"></i>持仓列表</span>
+                        <span class="badge bg-primary" id="positionCount">2</span>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>股票</th>
+                                        <th>数量</th>
+                                        <th>盈亏</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="positionsTable">
+                                    <tr>
+                                        <td>
+                                            <div><strong>NVDA</strong></div>
+                                            <small class="text-muted">¥850.00</small>
+                                        </td>
+                                        <td>100</td>
+                                        <td class="price-up">+2.97%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div><strong>JNJ</strong></div>
+                                            <small class="text-muted">¥150.00</small>
+                                        </td>
+                                        <td>200</td>
+                                        <td class="price-up">+1.60%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 交易历史 -->
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fas fa-history me-2"></i>交易历史
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="trade-history" id="tradeHistory">
+                            <div class="p-3 border-bottom border-secondary">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <span class="badge bg-success">买入</span>
+                                        <strong class="ms-2">NVDA</strong>
+                                    </div>
+                                    <div class="text-end">
+                                        <div>100股 @ ¥850.00</div>
+                                        <small class="text-muted">今天 10:30</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-3 border-bottom border-secondary">
+                                <div class="d-flex justify-content-between">
+                                    <div>
+                                        <span class="badge bg-success">买入</span>
+                                        <strong class="ms-2">JNJ</strong>
+                                    </div>
+                                    <div class="text-end">
+                                        <div>200股 @ ¥150.00</div>
+                                        <small class="text-muted">昨天 14:15</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 实时行情 -->
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fas fa-bolt me-2"></i>实时行情
+                    </div>
+                    <div class="card-body">
+                        <div class="ticker-display" id="tickerDisplay">
+                            <div>[10:31:25] NVDA +2.97% ↑ 875.28</div>
+                            <div>[10:31:24] JNJ +1.60% ↑ 152.40</div>
+                            <div>[10:31:23] AAPL +0.85% ↑ 185.32</div>
+                            <div>[10:31:22] MSFT -0.23% ↓ 395.50</div>
+                            <div class="blink">[10:31:21] GOOGL +1.12% ↑ 152.80</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast通知 -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toastContainer"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // 专业股票交易模拟系统核心逻辑
+        class ProfessionalTradingSimulator {
+            constructor() {
+                this.portfolio = {
+                    cash: 1000000,
+                    positions: {},
+                    orders: [],
+                    tradeHistory: []
+                };
+                this.marketData = {};
+                this.initializeDemoData();
+                this.bindEvents();
+                this.startMarketSimulation();
+            }
+
+            initializeDemoData() {
+                // 初始化持仓
+                this.portfolio.positions = {
+                    'NVDA': {
+                        symbol: 'NVDA',
+                        name: '英伟达',
+                        quantity: 100,
+                        avgPrice: 850.00,
+                        currentPrice: 875.28,
+                        marketValue: 87528,
+                        unrealizedPnl: 2528,
+                        unrealizedPnlPercent: 2.97
+                    },
+                    'JNJ': {
+                        symbol: 'JNJ',
+                        name: '强生',
+                        quantity: 200,
+                        avgPrice: 150.00,
+                        currentPrice: 152.40,
+                        marketValue: 30480,
+                        unrealizedPnl: 480,
+                        unrealizedPnlPercent: 1.60
+                    }
+                };
+
+                // 初始化市场数据
+                this.marketData = {
+                    'NVDA': { price: 875.28, bid: 875.25, ask: 875.30, volume: 1250000 },
+                    'JNJ': { price: 152.40, bid: 152.38, ask: 152.42, volume: 850000 },
+                    'AAPL': { price: 185.32, bid: 185.30, ask: 185.35, volume: 2100000 },
+                    'MSFT': { price: 395.50, bid: 395.45, ask: 395.55, volume: 1800000 },
+                    'GOOGL': { price: 152.80, bid: 152.75, ask: 152.85, volume: 950000 }
+                };
+
+                this.updateDisplay();
+                this.populatePositionDropdown();
+            }
+
+            bindEvents() {
+                // 绑定输入事件
+                document.getElementById('buyQuantity').addEventListener('input', () => this.calculateAmount('buy'));
+                document.getElementById('buyPrice').addEventListener('input', () => this.calculateAmount('buy'));
+                document.getElementById('sellQuantity').addEventListener('input', () => this.calculateAmount('sell'));
+                document.getElementById('sellPrice').addEventListener('input', () => this.calculateAmount('sell'));
+                
+                // 股票搜索
+                document.getElementById('stockSearch').addEventListener('input', (e) => this.searchStock(e.target.value));
+            }
+
+            calculateAmount(type) {
+                const quantity = parseFloat(document.getElementById(`${type}Quantity`).value) || 0;
+                const price = parseFloat(document.getElementById(`${type}Price`).value) || 0;
+                const amount = quantity * price;
+                
+                if (amount > 0) {
+                    document.getElementById(`${type}Amount`).value = `¥${amount.toLocaleString()}`;
+                }
+            }
+
+            executeBuy() {
+                const symbol = document.getElementById('currentSymbol').textContent;
+                const price = parseFloat(document.getElementById('buyPrice').value);
+                const quantity = parseInt(document.getElementById('buyQuantity').value);
+                const orderType = document.getElementById('buyOrderType').value;
+
+                if (!quantity || !price) {
+                    this.showToast('请输入完整的交易信息', 'warning');
+                    return;
+                }
+
+                const totalCost = quantity * price;
+                if (totalCost > this.portfolio.cash) {
+                    this.showToast('资金不足，无法完成交易', 'danger');
+                    return;
+                }
+
+                // 执行买入
+                this.portfolio.cash -= totalCost;
+                
+                if (this.portfolio.positions[symbol]) {
+                    // 更新现有持仓
+                    const position = this.portfolio.positions[symbol];
+                    const totalShares = position.quantity + quantity;
+                    const totalCostBasis = (position.quantity * position.avgPrice) + totalCost;
+                    position.avgPrice = totalCostBasis / totalShares;
+                    position.quantity = totalShares;
+                } else {
+                    // 创建新持仓
+                    this.portfolio.positions[symbol] = {
+                        symbol: symbol,
+                        name: this.getStockName(symbol),
+                        quantity: quantity,
+                        avgPrice: price,
+                        currentPrice: price,
+                        marketValue: totalCost,
+                        unrealizedPnl: 0,
+                        unrealizedPnlPercent: 0
+                    };
+                }
+
+                // 记录交易
+                this.recordTrade(symbol, 'BUY', quantity, price, totalCost);
+                this.updateDisplay();
+                this.populatePositionDropdown();
+                this.clearTradeForm('buy');
+                this.showToast(`成功买入 ${quantity} 股 ${symbol} @ ¥${price}`, 'success');
+            }
+
+            executeSell() {
+                const symbol = document.getElementById('currentSymbol').textContent;
+                const price = parseFloat(document.getElementById('sellPrice').value);
+                const quantity = parseInt(document.getElementById('sellQuantity').value);
+                const orderType = document.getElementById('sellOrderType').value;
+
+                if (!quantity || !price) {
+                    this.showToast('请输入完整的交易信息', 'warning');
+                    return;
+                }
+
+                const position = this.portfolio.positions[symbol];
+                if (!position || quantity > position.quantity) {
+                    this.showToast('卖出数量超过持仓数量', 'danger');
+                    return;
+                }
+
+                // 执行卖出
+                const proceeds = quantity * price;
+                this.portfolio.cash += proceeds;
+                
+                position.quantity -= quantity;
+                const realizedPnl = quantity * (price - position.avgPrice);
+
+                if (position.quantity === 0) {
+                    delete this.portfolio.positions[symbol];
+                }
+
+                // 记录交易
+                this.recordTrade(symbol, 'SELL', quantity, price, proceeds, realizedPnl);
+                this.updateDisplay();
+                this.populatePositionDropdown();
+                this.clearTradeForm('sell');
+                this.showToast(`成功卖出 ${quantity} 股 ${symbol} @ ¥${price} (实现盈亏: ¥${realizedPnl.toFixed(2)})`, 'success');
+            }
+
+            recordTrade(symbol, type, quantity, price, amount, realizedPnl = 0) {
+                const trade = {
+                    id: Date.now(),
+                    timestamp: new Date(),
+                    symbol: symbol,
+                    type: type,
+                    quantity: quantity,
+                    price: price,
+                    amount: type === 'BUY' ? -amount : amount,
+                    realizedPnl: realizedPnl
+                };
+                
+                this.portfolio.tradeHistory.unshift(trade);
+                this.updateTradeHistory();
+            }
+
+            updateDisplay() {
+                // 更新统计信息
+                const positionsValue = Object.values(this.portfolio.positions)
+                    .reduce((sum, pos) => sum + (pos.quantity * pos.currentPrice), 0);
+                const totalValue = this.portfolio.cash + positionsValue;
+                const unrealizedPnl = Object.values(this.portfolio.positions)
+                    .reduce((sum, pos) => sum + ((pos.currentPrice - pos.avgPrice) * pos.quantity), 0);
+
+                document.getElementById('totalValue').textContent = `¥${totalValue.toLocaleString()}`;
+                document.getElementById('cashBalance').textContent = `¥${this.portfolio.cash.toLocaleString()}`;
+                document.getElementById('positionsValue').textContent = `¥${positionsValue.toLocaleString()}`;
+                document.getElementById('unrealizedPnl').textContent = `¥${unrealizedPnl.toLocaleString()}`;
+                document.getElementById('positionCount').textContent = Object.keys(this.portfolio.positions).length;
+
+                // 更新持仓表格
+                this.updatePositionsTable();
+            }
+
+            updatePositionsTable() {
+                const tbody = document.getElementById('positionsTable');
+                const positions = Object.values(this.portfolio.positions);
+                
+                if (positions.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="3" class="text-center text-muted">暂无持仓</td></tr>';
+                    return;
+                }
+
+                tbody.innerHTML = positions.map(pos => {
+                    const pnlClass = pos.unrealizedPnl >= 0 ? 'price-up' : 'price-down';
+                    return `
+                        <tr>
+                            <td>
+                                <div><strong>${pos.symbol}</strong></div>
+                                <small class="text-muted">¥${pos.avgPrice.toFixed(2)}</small>
+                            </td>
+                            <td>${pos.quantity}</td>
+                            <td class="${pnlClass}">${pos.unrealizedPnlPercent.toFixed(2)}%</td>
+                        </tr>
+                    `;
+                }).join('');
+            }
+
+            updateTradeHistory() {
+                const container = document.getElementById('tradeHistory');
+                container.innerHTML = this.portfolio.tradeHistory.slice(0, 5).map(trade => {
+                    const badgeClass = trade.type === 'BUY' ? 'bg-success' : 'bg-danger';
+                    const typeText = trade.type === 'BUY' ? '买入' : '卖出';
+                    return `
+                        <div class="p-3 border-bottom border-secondary">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <span class="badge ${badgeClass}">${typeText}</span>
+                                    <strong class="ms-2">${trade.symbol}</strong>
+                                </div>
+                                <div class="text-end">
+                                    <div>${trade.quantity}股 @ ¥${trade.price.toFixed(2)}</div>
+                                    <small class="text-muted">${trade.timestamp.toLocaleTimeString()}</small>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            populatePositionDropdown() {
+                const select = document.getElementById('sellPositionSelect');
+                const positions = Object.values(this.portfolio.positions);
+                
+                select.innerHTML = '<option value="">选择持仓股票</option>' + 
+                    positions.map(pos => `<option value="${pos.symbol}">${pos.symbol} (${pos.quantity}股)</option>`).join('');
+            }
+
+            updateSellQuantity() {
+                const symbol = document.getElementById('sellPositionSelect').value;
+                const position = this.portfolio.positions[symbol];
+                if (position) {
+                    document.getElementById('sellQuantity').placeholder = `最多可卖 ${position.quantity} 股`;
+                }
+            }
+
+            setMarketPrice(type) {
+                const symbol = document.getElementById('currentSymbol').textContent;
+                const marketPrice = this.marketData[symbol]?.price || 0;
+                document.getElementById(`${type}Price`).value = marketPrice.toFixed(2);
+                this.calculateAmount(type);
+            }
+
+            clearTradeForm(type) {
+                document.getElementById(`${type}Quantity`).value = '';
+                document.getElementById(`${type}Amount`).value = '';
+                if (type === 'sell') {
+                    document.getElementById('sellPositionSelect').value = '';
+                }
+            }
+
+            searchStock(query) {
+                if (!query) return;
+                
+                const symbols = Object.keys(this.marketData);
+                const matched = symbols.find(sym => 
+                    sym.toLowerCase().includes(query.toLowerCase()) || 
+                    this.getStockName(sym).toLowerCase().includes(query.toLowerCase())
+                );
+                
+                if (matched) {
+                    this.selectStock(matched);
+                }
+            }
+
+            selectStock(symbol) {
+                const data = this.marketData[symbol];
+                document.getElementById('currentSymbol').textContent = symbol;
+                document.getElementById('currentPrice').textContent = `¥${data.price.toFixed(2)}`;
+                document.getElementById('buyPrice').value = data.ask.toFixed(2);
+                document.getElementById('sellPrice').value = data.bid.toFixed(2);
+                
+                // 更新价格变化显示
+                const change = ((data.price - (data.price / 1.02)) / (data.price / 1.02) * 100);
+                const changeClass = change >= 0 ? 'price-up' : 'price-down';
+                document.getElementById('priceChange').className = changeClass;
+                document.getElementById('priceChange').textContent = `${change >= 0 ? '+' : ''}${change.toFixed(2)}%`;
+            }
+
+            getStockName(symbol) {
+                const names = {
+                    'NVDA': '英伟达',
+                    'JNJ': '强生',
+                    'AAPL': '苹果',
+                    'MSFT': '微软',
+                    'GOOGL': '谷歌'
+                };
+                return names[symbol] || symbol;
+            }
+
+            startMarketSimulation() {
+                // 模拟市场价格波动
+                setInterval(() => {
+                    Object.entries(this.marketData).forEach(([symbol, data]) => {
+                        // 随机价格波动 (-1% 到 +1%)
+                        const changePercent = (Math.random() - 0.5) * 0.02;
+                        data.price = data.price * (1 + changePercent);
+                        data.price = Math.max(0.01, Math.round(data.price * 100) / 100);
+                        
+                        // 更新买价卖价
+                        data.bid = data.price * 0.9995;
+                        data.ask = data.price * 1.0005;
+                        
+                        // 如果是当前显示的股票，更新显示
+                        if (document.getElementById('currentSymbol').textContent === symbol) {
+                            this.selectStock(symbol);
+                        }
+                    });
+                    
+                    this.updateTickerDisplay();
+                }, 3000);
+            }
+
+            updateTickerDisplay() {
+                const ticker = document.getElementById('tickerDisplay');
+                const symbols = Object.keys(this.marketData);
+                const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+                const data = this.marketData[randomSymbol];
+                const change = ((data.price - (data.price / 1.02)) / (data.price / 1.02) * 100);
+                const arrow = change >= 0 ? '↑' : '↓';
+                const time = new Date().toLocaleTimeString();
+                
+                const newEntry = document.createElement('div');
+                newEntry.innerHTML = `[${time}] ${randomSymbol} ${change >= 0 ? '+' : ''}${change.toFixed(2)}% ${arrow} ${data.price.toFixed(2)}`;
+                newEntry.className = change >= 0 ? 'price-up' : 'price-down';
+                
+                ticker.insertBefore(newEntry, ticker.firstChild);
+                
+                // 限制显示条目数量
+                if (ticker.children.length > 10) {
+                    ticker.removeChild(ticker.lastChild);
+                }
+            }
+
+            showToast(message, type = 'info') {
+                const container = document.getElementById('toastContainer');
+                const toast = document.createElement('div');
+                toast.className = `toast show`;
+                toast.style.backgroundColor = this.getToastColor(type);
+                
+                toast.innerHTML = `
+                    <div class="toast-body text-white">
+                        <i class="fas fa-${this.getToastIcon(type)} me-2"></i>
+                        ${message}
+                    </div>
+                `;
+                
+                container.appendChild(toast);
+                
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.remove();
+                    }
+                }, 3000);
+            }
+
+            getToastColor(type) {
+                const colors = {
+                    'success': '#198754',
+                    'danger': '#dc3545',
+                    'warning': '#ffc107',
+                    'info': '#0d6efd'
+                };
+                return colors[type] || colors.info;
+            }
+
+            getToastIcon(type) {
+                const icons = {
+                    'success': 'check-circle',
+                    'danger': 'exclamation-circle',
+                    'warning': 'exclamation-triangle',
+                    'info': 'info-circle'
+                };
+                return icons[type] || icons.info;
+            }
+        }
+
+        // 初始化交易模拟器
+        const tradingSimulator = new ProfessionalTradingSimulator();
+    </script>
+</body>
+</html>
