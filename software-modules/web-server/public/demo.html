@@ -347,98 +347,392 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // 简化的应用逻辑
-        function executeTrade() {
-            const symbol = document.getElementById('stockSymbol').value.toUpperCase();
-            const type = document.getElementById('tradeType').value;
-            const quantity = document.getElementById('tradeQuantity').value;
-            const price = document.getElementById('tradePrice').value;
-            
-            if (!symbol || !quantity || !price) {
-                showToast('请填写完整的交易信息', 'warning');
-                return;
+        // 家族财富管理系统核心逻辑
+        class PortfolioSystem {
+            constructor() {
+                this.portfolio = {
+                    cash: 1000000,
+                    positions: {},
+                    transactions: [],
+                    history: []
+                };
+                this.loadPortfolio();
+                this.initializeDemoData();
             }
             
-            const action = type === 'buy' ? '买入' : '卖出';
-            showToast(`${action} ${quantity} 股 ${symbol} @ ¥${price} 成功！`, 'success');
+            // 初始化演示数据
+            initializeDemoData() {
+                // NVDA持仓
+                this.portfolio.positions['NVDA'] = {
+                    symbol: 'NVDA',
+                    name: '英伟达',
+                    quantity: 100,
+                    costBasis: 850.00,
+                    currentPrice: 875.28,
+                    marketValue: 87528,
+                    unrealizedPnl: 2528,
+                    unrealizedPnlPercent: 2.97
+                };
+                
+                // JNJ持仓
+                this.portfolio.positions['JNJ'] = {
+                    symbol: 'JNJ',
+                    name: '强生',
+                    quantity: 200,
+                    costBasis: 150.00,
+                    currentPrice: 152.40,
+                    marketValue: 30480,
+                    unrealizedPnl: 480,
+                    unrealizedPnlPercent: 1.60
+                };
+                
+                this.updatePortfolioDisplay();
+                this.startPriceSimulation();
+            }
             
-            // 清空表单
-            document.getElementById('stockSymbol').value = '';
-            document.getElementById('tradeQuantity').value = '';
-            document.getElementById('tradePrice').value = '';
+            // 执行交易
+            executeTrade() {
+                const symbol = document.getElementById('stockSymbol').value.toUpperCase();
+                const type = document.getElementById('tradeType').value;
+                const quantity = parseInt(document.getElementById('tradeQuantity').value);
+                const price = parseFloat(document.getElementById('tradePrice').value);
+                
+                if (!symbol || !quantity || !price) {
+                    this.showToast('请填写完整的交易信息', 'warning');
+                    return;
+                }
+                
+                if (type === 'buy') {
+                    this.buyStock(symbol, quantity, price);
+                } else {
+                    this.sellStock(symbol, quantity, price);
+                }
+            }
+            
+            // 买入股票
+            buyStock(symbol, quantity, price) {
+                const totalCost = quantity * price + 10; // 加上手续费
+                
+                if (totalCost > this.portfolio.cash) {
+                    this.showToast('资金不足，无法完成交易', 'danger');
+                    return;
+                }
+                
+                // 更新现金
+                this.portfolio.cash -= totalCost;
+                
+                // 更新或创建持仓
+                if (this.portfolio.positions[symbol]) {
+                    const position = this.portfolio.positions[symbol];
+                    const totalShares = position.quantity + quantity;
+                    const totalCostBasis = (position.quantity * position.costBasis) + (quantity * price);
+                    position.costBasis = totalCostBasis / totalShares;
+                    position.quantity = totalShares;
+                    position.currentPrice = price;
+                } else {
+                    this.portfolio.positions[symbol] = {
+                        symbol: symbol,
+                        name: this.getStockName(symbol),
+                        quantity: quantity,
+                        costBasis: price,
+                        currentPrice: price,
+                        marketValue: quantity * price,
+                        unrealizedPnl: 0,
+                        unrealizedPnlPercent: 0
+                    };
+                }
+                
+                // 记录交易
+                this.portfolio.transactions.push({
+                    id: Date.now(),
+                    symbol: symbol,
+                    type: 'BUY',
+                    quantity: quantity,
+                    price: price,
+                    amount: -totalCost,
+                    timestamp: new Date()
+                });
+                
+                // 更新显示
+                this.updatePortfolioDisplay();
+                this.recordHistory();
+                this.clearTradeForm();
+                this.showToast(`买入 ${quantity} 股 ${symbol} @ ¥${price} 成功！`, 'success');
+            }
+            
+            // 卖出股票
+            sellStock(symbol, quantity, price) {
+                const position = this.portfolio.positions[symbol];
+                
+                if (!position) {
+                    this.showToast('该股票无持仓', 'danger');
+                    return;
+                }
+                
+                if (quantity > position.quantity) {
+                    this.showToast('卖出数量超过持仓数量', 'danger');
+                    return;
+                }
+                
+                // 计算收入
+                const proceeds = quantity * price - 10; // 扣除手续费
+                this.portfolio.cash += proceeds;
+                
+                // 更新持仓
+                position.quantity -= quantity;
+                const realizedPnl = quantity * (price - position.costBasis);
+                
+                // 记录交易
+                this.portfolio.transactions.push({
+                    id: Date.now(),
+                    symbol: symbol,
+                    type: 'SELL',
+                    quantity: quantity,
+                    price: price,
+                    amount: proceeds,
+                    realizedPnl: realizedPnl,
+                    timestamp: new Date()
+                });
+                
+                // 如果持仓清空，移除该持仓
+                if (position.quantity === 0) {
+                    delete this.portfolio.positions[symbol];
+                }
+                
+                // 更新显示
+                this.updatePortfolioDisplay();
+                this.recordHistory();
+                this.clearTradeForm();
+                this.showToast(`卖出 ${quantity} 股 ${symbol} @ ¥${price} 成功！实现盈亏: ¥${realizedPnl.toFixed(2)}`, 'success');
+            }
+            
+            // 更新投资组合显示
+            updatePortfolioDisplay() {
+                // 更新统计卡片
+                const positionsValue = Object.values(this.portfolio.positions)
+                    .reduce((sum, pos) => sum + (pos.quantity * pos.currentPrice), 0);
+                
+                const totalValue = this.portfolio.cash + positionsValue;
+                const unrealizedPnl = Object.values(this.portfolio.positions)
+                    .reduce((sum, pos) => sum + ((pos.currentPrice - pos.costBasis) * pos.quantity), 0);
+                
+                document.getElementById('totalValue').textContent = `¥${totalValue.toLocaleString()}`;
+                document.getElementById('cashBalance').textContent = `¥${this.portfolio.cash.toLocaleString()}`;
+                document.getElementById('unrealizedPnl').textContent = `¥${unrealizedPnl.toLocaleString()}`;
+                document.getElementById('positionCount').textContent = Object.keys(this.portfolio.positions).length;
+                
+                // 更新持仓表格
+                this.updatePositionsTable();
+            }
+            
+            // 更新持仓表格
+            updatePositionsTable() {
+                const tbody = document.getElementById('positionsTable');
+                const positions = Object.values(this.portfolio.positions);
+                
+                if (positions.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="8" class="text-center">暂无持仓</td></tr>';
+                    return;
+                }
+                
+                tbody.innerHTML = positions.map(pos => {
+                    const pnlClass = pos.unrealizedPnl >= 0 ? 'text-success' : 'text-danger';
+                    const pnlPercentClass = pos.unrealizedPnlPercent >= 0 ? 'text-success' : 'text-danger';
+                    
+                    return `
+                        <tr>
+                            <td>
+                                <strong>${pos.symbol}</strong><br>
+                                <small class="text-muted">${pos.name}</small>
+                            </td>
+                            <td>${pos.quantity}</td>
+                            <td>¥${pos.costBasis.toFixed(2)}</td>
+                            <td>¥${pos.currentPrice.toFixed(2)}</td>
+                            <td>¥${(pos.quantity * pos.currentPrice).toLocaleString()}</td>
+                            <td class="${pnlClass}">¥${pos.unrealizedPnl.toLocaleString()}</td>
+                            <td class="${pnlPercentClass}">${pos.unrealizedPnlPercent.toFixed(2)}%</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary me-1" onclick="portfolioSystem.showDetail('${pos.symbol}')">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger" onclick="portfolioSystem.prepareSell('${pos.symbol}')">
+                                    <i class="fas fa-arrow-down"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+            }
+            
+            // 准备卖出
+            prepareSell(symbol) {
+                document.getElementById('stockSymbol').value = symbol;
+                document.getElementById('tradeType').value = 'sell';
+                const position = this.portfolio.positions[symbol];
+                if (position) {
+                    document.getElementById('tradePrice').value = position.currentPrice.toFixed(2);
+                }
+                this.showToast(`已准备卖出 ${symbol}，请填写数量`, 'info');
+            }
+            
+            // 显示详情
+            showDetail(symbol) {
+                const position = this.portfolio.positions[symbol];
+                if (position) {
+                    const detail = `
+                        股票代码: ${position.symbol}
+                        公司名称: ${position.name}
+                        持仓数量: ${position.quantity}
+                        成本价: ¥${position.costBasis.toFixed(2)}
+                        当前价: ¥${position.currentPrice.toFixed(2)}
+                        市值: ¥${(position.quantity * position.currentPrice).toLocaleString()}
+                        未实现盈亏: ¥${position.unrealizedPnl.toLocaleString()}
+                        盈亏率: ${position.unrealizedPnlPercent.toFixed(2)}%
+                    `;
+                    alert(detail);
+                }
+            }
+            
+            // 快速买入
+            quickBuy(symbol) {
+                document.getElementById('stockSymbol').value = symbol;
+                document.getElementById('tradeType').value = 'buy';
+                this.showToast(`已准备买入 ${symbol}，请填写数量和价格`, 'info');
+            }
+            
+            // 清空交易表单
+            clearTradeForm() {
+                document.getElementById('stockSymbol').value = '';
+                document.getElementById('tradeQuantity').value = '';
+                document.getElementById('tradePrice').value = '';
+            }
+            
+            // 记录历史
+            recordHistory() {
+                const positionsValue = Object.values(this.portfolio.positions)
+                    .reduce((sum, pos) => sum + (pos.quantity * pos.currentPrice), 0);
+                
+                this.portfolio.history.push({
+                    timestamp: new Date(),
+                    cash: this.portfolio.cash,
+                    positionsValue: positionsValue,
+                    totalValue: this.portfolio.cash + positionsValue
+                });
+            }
+            
+            // 价格模拟
+            startPriceSimulation() {
+                setInterval(() => {
+                    Object.values(this.portfolio.positions).forEach(position => {
+                        // 随机价格波动 (-2% 到 +2%)
+                        const changePercent = (Math.random() - 0.5) * 0.04;
+                        position.currentPrice = position.currentPrice * (1 + changePercent);
+                        position.currentPrice = Math.max(0.01, Math.round(position.currentPrice * 100) / 100);
+                        
+                        // 更新计算值
+                        position.marketValue = position.quantity * position.currentPrice;
+                        position.unrealizedPnl = (position.currentPrice - position.costBasis) * position.quantity;
+                        position.unrealizedPnlPercent = ((position.currentPrice - position.costBasis) / position.costBasis) * 100;
+                    });
+                    
+                    this.updatePortfolioDisplay();
+                }, 5000);
+            }
+            
+            // 获取股票名称
+            getStockName(symbol) {
+                const names = {
+                    'NVDA': '英伟达',
+                    'JNJ': '强生',
+                    'MSFT': '微软',
+                    'GOOGL': '谷歌',
+                    'AAPL': '苹果',
+                    'AMZN': '亚马逊',
+                    'TSLA': '特斯拉'
+                };
+                return names[symbol] || symbol;
+            }
+            
+            // 加载投资组合
+            loadPortfolio() {
+                const saved = localStorage.getItem('familyWealthPortfolio');
+                if (saved) {
+                    this.portfolio = JSON.parse(saved);
+                }
+            }
+            
+            // 保存投资组合
+            savePortfolio() {
+                localStorage.setItem('familyWealthPortfolio', JSON.stringify(this.portfolio));
+            }
+            
+            // Toast通知
+            showToast(message, type = 'info') {
+                const container = document.getElementById('toastContainer');
+                const toast = document.createElement('div');
+                toast.className = 'alert alert-' + this.getAlertClass(type) + ' alert-dismissible fade show';
+                toast.innerHTML = `
+                    <i class="fas fa-${this.getAlertIcon(type)} me-2"></i>
+                    ${message}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                `;
+                
+                container.appendChild(toast);
+                
+                // 3秒后自动关闭
+                setTimeout(() => {
+                    if (toast.parentNode) {
+                        toast.remove();
+                    }
+                }, 3000);
+            }
+            
+            getAlertClass(type) {
+                const classes = {
+                    'success': 'success',
+                    'danger': 'danger',
+                    'warning': 'warning',
+                    'info': 'info'
+                };
+                return classes[type] || 'info';
+            }
+            
+            getAlertIcon(type) {
+                const icons = {
+                    'success': 'check-circle',
+                    'danger': 'exclamation-circle',
+                    'warning': 'exclamation-triangle',
+                    'info': 'info-circle'
+                };
+                return icons[type] || 'info-circle';
+            }
+        }
+        
+        // 初始化系统
+        const portfolioSystem = new PortfolioSystem();
+        
+        // 全局函数绑定
+        function executeTrade() {
+            portfolioSystem.executeTrade();
         }
         
         function prepareSell(symbol) {
-            document.getElementById('stockSymbol').value = symbol;
-            document.getElementById('tradeType').value = 'sell';
-            showToast(`已准备卖出 ${symbol}，请填写数量和价格`, 'info');
+            portfolioSystem.prepareSell(symbol);
         }
         
         function showDetail(symbol) {
-            showToast(`显示 ${symbol} 详细信息`, 'info');
+            portfolioSystem.showDetail(symbol);
         }
         
         function quickBuy(symbol) {
-            document.getElementById('stockSymbol').value = symbol;
-            document.getElementById('tradeType').value = 'buy';
-            showToast(`已准备买入 ${symbol}，请填写数量和价格`, 'info');
+            portfolioSystem.quickBuy(symbol);
         }
         
         function refreshNews() {
-            showToast('新闻已刷新', 'info');
+            portfolioSystem.showToast('新闻已刷新', 'info');
         }
         
-        function showToast(message, type = 'info') {
-            const container = document.getElementById('toastContainer');
-            const toast = document.createElement('div');
-            toast.className = 'alert alert-' + getAlertClass(type) + ' alert-dismissible fade show';
-            toast.innerHTML = `
-                <i class="fas fa-${getAlertIcon(type)} me-2"></i>
-                ${message}
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            `;
-            
-            container.appendChild(toast);
-            
-            // 3秒后自动关闭
-            setTimeout(() => {
-                if (toast.parentNode) {
-                    toast.remove();
-                }
-            }, 3000);
-        }
-        
-        function getAlertClass(type) {
-            const classes = {
-                'success': 'success',
-                'danger': 'danger',
-                'warning': 'warning',
-                'info': 'info'
-            };
-            return classes[type] || 'info';
-        }
-        
-        function getAlertIcon(type) {
-            const icons = {
-                'success': 'check-circle',
-                'danger': 'exclamation-circle',
-                'warning': 'exclamation-triangle',
-                'info': 'info-circle'
-            };
-            return icons[type] || 'info-circle';
-        }
-        
-        // 模拟价格自动更新
-        setInterval(() => {
-            // 随机小幅价格波动
-            const tables = document.querySelectorAll('#positionsTable td:nth-child(4)');
-            tables.forEach(cell => {
-                const currentPrice = parseFloat(cell.textContent.replace('¥', '').replace(',', ''));
-                const change = (Math.random() - 0.5) * 2; // -1到+1的随机变化
-                const newPrice = Math.max(0.01, currentPrice + change);
-                cell.textContent = '¥' + newPrice.toFixed(2);
-            });
-        }, 5000);
+
     </script>
 </body>
 </html>
