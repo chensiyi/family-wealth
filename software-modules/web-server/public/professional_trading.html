@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>专业股票交易模拟器 - 家族财富管理系统</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -234,10 +233,16 @@
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="stockSearch" placeholder="输入股票代码或名称">
-                                    <button class="btn btn-primary" type="button">
+                                    <input type="text" class="form-control" id="stockSearch" placeholder="输入股票代码或名称" oninput="searchStock(this.value)">
+                                    <button class="btn btn-primary" type="button" onclick="selectFirstSearchResult()">
                                         <i class="fas fa-search"></i>
                                     </button>
+                                </div>
+                                <div id="searchResults" class="position-relative mt-2" style="display: none;">
+                                    <div class="bg-white border rounded shadow-lg position-absolute w-100 z-index-1000">
+                                        <ul class="list-group list-group-flush" id="searchResultsList">
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -317,7 +322,7 @@
                                         <label class="form-label">委托价格</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="buyPrice" value="875.28" step="0.01">
-                                            <button class="btn btn-outline-success" type="button" onclick="setMarketPrice('buy')">市价</button>
+                                            <button class="btn btn-outline-success" type="button" onclick="window.setMarketPrice('buy')">市价</button>
                                         </div>
                                     </div>
                                     <div class="mb-3">
@@ -336,7 +341,7 @@
                                             <option value="stop">止损单</option>
                                         </select>
                                     </div>
-                                    <button class="btn btn-success w-100" onclick="executeBuy()">
+                                    <button class="btn btn-success w-100" onclick="if(window.tradingSimulator) tradingSimulator.executeBuy()">
                                         <i class="fas fa-shopping-cart me-2"></i>买入股票
                                     </button>
                                 </div>
@@ -352,7 +357,7 @@
                                         <label class="form-label">委托价格</label>
                                         <div class="input-group">
                                             <input type="number" class="form-control" id="sellPrice" value="875.28" step="0.01">
-                                            <button class="btn btn-outline-danger" type="button" onclick="setMarketPrice('sell')">市价</button>
+                                            <button class="btn btn-outline-danger" type="button" onclick="window.setMarketPrice('sell')">市价</button>
                                         </div>
                                     </div>
                                     <div class="mb-3">
@@ -374,7 +379,7 @@
                                             <option value="stop">止损单</option>
                                         </select>
                                     </div>
-                                    <button class="btn btn-danger w-100" onclick="executeSell()">
+                                    <button class="btn btn-danger w-100" onclick="if(window.tradingSimulator) tradingSimulator.executeSell()">
                                         <i class="fas fa-money-bill-wave me-2"></i>卖出股票
                                     </button>
                                 </div>
@@ -571,7 +576,7 @@
                     return;
                 }
 
-                const totalCost = quantity * price;
+                const totalCost = parseFloat((quantity * price).toFixed(2));
                 if (totalCost > this.portfolio.cash) {
                     this.showToast('资金不足，无法完成交易', 'danger');
                     return;
@@ -627,11 +632,11 @@
                 }
 
                 // 执行卖出
-                const proceeds = quantity * price;
+                const proceeds = parseFloat((quantity * price).toFixed(2));
                 this.portfolio.cash += proceeds;
                 
                 position.quantity -= quantity;
-                const realizedPnl = quantity * (price - position.avgPrice);
+                const realizedPnl = parseFloat((quantity * (price - position.avgPrice)).toFixed(2));
 
                 if (position.quantity === 0) {
                     delete this.portfolio.positions[symbol];
@@ -667,12 +672,17 @@
                     .reduce((sum, pos) => sum + (pos.quantity * pos.currentPrice), 0);
                 const totalValue = this.portfolio.cash + positionsValue;
                 const unrealizedPnl = Object.values(this.portfolio.positions)
-                    .reduce((sum, pos) => sum + ((pos.currentPrice - pos.avgPrice) * pos.quantity), 0);
+                    .reduce((sum, pos) => {
+                        const pnl = (pos.currentPrice - pos.avgPrice) * pos.quantity;
+                        return sum + pnl;
+                    }, 0);
 
                 document.getElementById('totalValue').textContent = `¥${totalValue.toLocaleString()}`;
                 document.getElementById('cashBalance').textContent = `¥${this.portfolio.cash.toLocaleString()}`;
                 document.getElementById('positionsValue').textContent = `¥${positionsValue.toLocaleString()}`;
-                document.getElementById('unrealizedPnl').textContent = `¥${unrealizedPnl.toLocaleString()}`;
+                // 修复盈亏显示：确保负数显示正确
+                const pnlText = unrealizedPnl >= 0 ? `¥${unrealizedPnl.toLocaleString()}` : `-¥${Math.abs(unrealizedPnl).toLocaleString()}`;
+                document.getElementById('unrealizedPnl').textContent = pnlText;
                 document.getElementById('positionCount').textContent = Object.keys(this.portfolio.positions).length;
 
                 // 更新持仓表格
@@ -757,21 +767,34 @@
             }
 
             searchStock(query) {
-                if (!query) return;
+                if (!query) {
+                    document.getElementById('searchResults').style.display = 'none';
+                    return;
+                }
                 
                 const symbols = Object.keys(this.marketData);
-                const matched = symbols.find(sym => 
+                const results = symbols.filter(sym => 
                     sym.toLowerCase().includes(query.toLowerCase()) || 
                     this.getStockName(sym).toLowerCase().includes(query.toLowerCase())
-                );
+                ).slice(0, 5);
                 
-                if (matched) {
-                    this.selectStock(matched);
+                const resultsList = document.getElementById('searchResultsList');
+                if (results.length > 0) {
+                    resultsList.innerHTML = results.map(sym => {
+                        const name = this.getStockName(sym);
+                        return `<li class="list-group-item cursor-pointer" onclick="tradingSimulator.selectStock('${sym}')">${sym} - ${name}</li>`;
+                    }).join('');
+                    document.getElementById('searchResults').style.display = 'block';
+                } else {
+                    resultsList.innerHTML = '<li class="list-group-item text-muted">无匹配结果</li>';
+                    document.getElementById('searchResults').style.display = 'block';
                 }
             }
 
             selectStock(symbol) {
                 const data = this.marketData[symbol];
+                if (!data) return;
+                
                 document.getElementById('currentSymbol').textContent = symbol;
                 document.getElementById('currentPrice').textContent = `¥${data.price.toFixed(2)}`;
                 document.getElementById('buyPrice').value = data.ask.toFixed(2);
@@ -782,6 +805,12 @@
                 const changeClass = change >= 0 ? 'price-up' : 'price-down';
                 document.getElementById('priceChange').className = changeClass;
                 document.getElementById('priceChange').textContent = `${change >= 0 ? '+' : ''}${change.toFixed(2)}%`;
+                
+                // 更新市场深度显示
+                this.updateMarketDepth();
+                
+                // 隐藏搜索结果
+                document.getElementById('searchResults').style.display = 'none';
             }
 
             getStockName(symbol) {
@@ -881,9 +910,98 @@
                 return icons[type] || icons.info;
             }
         }
-
+        
+        // 添加市场深度更新方法
+        ProfessionalTradingSimulator.prototype.updateMarketDepth = function() {
+            const symbol = document.getElementById('currentSymbol').textContent;
+            const data = this.marketData[symbol];
+            if (!data) return;
+                    
+            // 更新买盘
+            const bidBook = document.getElementById('bidBook');
+            bidBook.innerHTML = `
+                <div class="d-flex justify-content-between py-1 border-bottom border-secondary">
+                    <span>${(data.bid * 0.999).toFixed(2)}</span>
+                    <span>100</span>
+                    <span class="text-success">¥${(data.bid * 0.999 * 100).toFixed(2)}</span>
+                </div>
+                <div class="d-flex justify-content-between py-1 border-bottom border-secondary">
+                    <span>${(data.bid * 0.998).toFixed(2)}</span>
+                    <span>200</span>
+                    <span class="text-success">¥${(data.bid * 0.998 * 200).toFixed(2)}</span>
+                </div>
+                <div class="d-flex justify-content-between py-1 border-bottom border-secondary">
+                    <span>${(data.bid * 0.997).toFixed(2)}</span>
+                    <span>150</span>
+                    <span class="text-success">¥${(data.bid * 0.997 * 150).toFixed(2)}</span>
+                </div>
+            `;
+                    
+            // 更新卖盘
+            const askBook = document.getElementById('askBook');
+            askBook.innerHTML = `
+                <div class="d-flex justify-content-between py-1 border-bottom border-secondary">
+                    <span>${(data.ask * 1.001).toFixed(2)}</span>
+                    <span>120</span>
+                    <span class="text-danger">¥${(data.ask * 1.001 * 120).toFixed(2)}</span>
+                </div>
+                <div class="d-flex justify-content-between py-1 border-bottom border-secondary">
+                    <span>${(data.ask * 1.002).toFixed(2)}</span>
+                    <span>80</span>
+                    <span class="text-danger">¥${(data.ask * 1.002 * 80).toFixed(2)}</span>
+                </div>
+                <div class="d-flex justify-content-between py-1 border-bottom border-secondary">
+                    <span>${(data.ask * 1.003).toFixed(2)}</span>
+                    <span>180</span>
+                    <span class="text-danger">¥${(data.ask * 1.003 * 180).toFixed(2)}</span>
+                </div>
+            `;
+        };
+        
         // 初始化交易模拟器
         const tradingSimulator = new ProfessionalTradingSimulator();
+        
+        // 全局函数暴露
+        window.setMarketPrice = function(type) {
+            if (typeof tradingSimulator !== 'undefined' && tradingSimulator instanceof ProfessionalTradingSimulator) {
+                tradingSimulator.setMarketPrice(type);
+            }
+        };
+        window.executeBuy = function() {
+            if (typeof tradingSimulator !== 'undefined' && tradingSimulator instanceof ProfessionalTradingSimulator) {
+                tradingSimulator.executeBuy();
+            }
+        };
+        window.executeSell = function() {
+            if (typeof tradingSimulator !== 'undefined' && tradingSimulator instanceof ProfessionalTradingSimulator) {
+                tradingSimulator.executeSell();
+            };
+        }
+        
+        // 全局函数绑定 - 修复交互异常问题
+        window.tradingSimulator = null;
+                
+        // 等待DOM加载完成后再初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            window.tradingSimulator = new ProfessionalTradingSimulator();
+                    
+            // 绑定全局函数
+            window.setMarketPrice = function(type) {
+                if (window.tradingSimulator && typeof window.tradingSimulator.setMarketPrice === 'function') {
+                    window.tradingSimulator.setMarketPrice(type);
+                }
+            };
+            window.executeBuy = function() {
+                if (window.tradingSimulator && typeof window.tradingSimulator.executeBuy === 'function') {
+                    window.tradingSimulator.executeBuy();
+                }
+            };
+            window.executeSell = function() {
+                if (window.tradingSimulator && typeof window.tradingSimulator.executeSell === 'function') {
+                    window.tradingSimulator.executeSell();
+                }
+            };
+        });
     </script>
 </body>
 </html>

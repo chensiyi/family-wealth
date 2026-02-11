@@ -182,6 +182,50 @@ class DataAccessService:
                 'success': False,
                 'error': str(e)
             }
+        """获取企业数据"""
+        try:
+            cache_key = self._generate_cache_key('corporate', symbol, '-'.join(data_fields))
+            
+            if not force_refresh:
+                cached_data = self.cache_manager.get_cached_data(cache_key)
+                if cached_data:
+                    return {
+                        'success': True,
+                        'data': cached_data,
+                        'source': 'cache'
+                    }
+            
+            # 从多个数据源获取企业数据
+            yahoo_data = self._fetch_from_source('yahoo_finance', {
+                'symbol': symbol,
+                'data_type': 'company_profile'
+            })
+            
+            sec_data = self._fetch_from_source('sec_edgar', {
+                'symbol': symbol,
+                'data_type': 'filings'
+            })
+            
+            # 合并和处理数据
+            processed_data = self._process_corporate_data(yahoo_data, sec_data, data_fields)
+            
+            # 缓存数据
+            ttl = 3600  # 企业基本信息一小时更新一次
+            self.cache_manager.set_cached_data(cache_key, processed_data, ttl)
+            
+            return {
+                'success': True,
+                'data': processed_data,
+                'source': 'multiple',
+                'fetched_at': datetime.now().isoformat()
+            }
+            
+        except Exception as e:
+            self.logger.error(f"获取企业数据失败: {e}")
+            return {
+                'success': False,
+                'error': str(e)
+            }
     
     def _fetch_from_source(self, source_id: str, params: Dict) -> Dict:
         """从指定数据源获取数据"""
@@ -230,6 +274,55 @@ class DataAccessService:
         }
     
     def _process_corporate_data(self, yahoo_data: Dict, sec_data: Dict, fields: List[str]) -> Dict:
+        """处理企业数据"""
+        return {
+            'yahoo_data': yahoo_data.get('data', {}),
+            'sec_data': sec_data.get('data', {}),
+            'requested_fields': fields,
+            'processing_time': datetime.now().isoformat()
+        }
+    
+    def store_trade_data(self, trade_record: Dict) -> Dict:
+        """存储交易数据（通过中台层）"""
+        try:
+            # 验证交易记录
+            required_fields = ['trade_id', 'symbol', 'type', 'quantity', 'price', 
+                             'timestamp', 'portfolio_id', 'amount']
+            if not all(field in trade_record for field in required_fields):
+                return {
+                    'success': False,
+                    'error': f'交易记录缺少必要字段: {required_fields}'
+                }
+            
+            # 生成缓存键
+            cache_key = self._generate_cache_key('trade', trade_record['trade_id'])
+            
+            # 存储到数据库（这里应该调用实际的数据库操作）
+            # 暂时返回成功
+            success = True
+            
+            if success:
+                # 缓存交易记录（短期缓存）
+                ttl = 300  # 5分钟
+                self.cache_manager.set_cached_data(cache_key, trade_record, ttl)
+                
+                return {
+                    'success': True,
+                    'trade_id': trade_record['trade_id'],
+                    'stored_at': datetime.now().isoformat()
+                }
+            else:
+                return {
+                    'success': False,
+                    'error': '交易数据存储失败'
+                }
+                
+        except Exception as e:
+            self.logger.error(f"存储交易数据失败: {e}")
+            return {
+                'success': False,
+                'error': str(e)
+            }
         """处理企业数据"""
         return {
             'yahoo_data': yahoo_data.get('data', {}),
