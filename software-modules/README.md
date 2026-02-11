@@ -5,9 +5,73 @@
 ## 🎯 项目定位
 
 本软件模块体系作为知识框架的技术实现层，为家族财富管理提供：
-- **数据基础设施**：专业级金融数据采集和存储
+- **数据基础设施**：现代化数据中台架构
 - **分析引擎**：智能化的数据处理和分析能力
 - **交互界面**：直观友好的数据展示和操作平台
+
+## 🚀 快速开始
+
+### 环境要求
+```bash
+# Python版本要求
+Python 3.8+
+
+# Node.js版本要求
+Node.js 16+
+
+# 推荐使用虚拟环境
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# 或者在Windows上:
+# venv\Scripts\activate.bat
+```
+
+### 模块运行方式
+
+#### 1. 数据中台模块
+```bash
+# 进入数据中台目录
+cd data-hub
+
+# 初始化数据库
+python storage/initialize_hub_database.py
+
+# 启动数据中台服务
+python main.py
+```
+
+#### 2. 沙盘系统模块
+```bash
+# 进入沙盘系统目录
+cd sandbox-system
+
+# 启动沙盘系统
+python main.py
+
+# 运行功能测试
+python -c "from utils.data_hub_adapter import create_sandbox_data_adapter; adapter = create_sandbox_data_adapter(); print('健康检查:', adapter.health_check())"
+```
+
+#### 3. Web服务器模块
+```bash
+# 进入Web服务器目录
+cd web-server
+
+# 安装依赖
+npm install
+
+# 启动服务器
+npm start
+```
+
+### 常用命令
+```bash
+# 查看所有模块状态
+python -c "import sys; sys.path.append('.'); from data_hub.main import DataHub; hub = DataHub(); print(hub.health_check())"
+
+# 测试数据获取
+python -c "from sandbox_system.utils.data_hub_adapter import create_sandbox_data_adapter; adapter = create_sandbox_data_adapter(); result = adapter.get_financial_data('SPY', 'prices'); print('SPY数据:', '成功' if result['success'] else '失败')"
+```
 
 ## 🏗️ 系统架构设计
 
@@ -26,24 +90,29 @@
 ```
 software-modules/
 ├── README.md                    # 本文件 - 软件总体设计
+├── data-hub/                    # 数据中台模块
+│   ├── README.md               # 数据中台架构说明
+│   ├── core/                   # 核心服务层
+│   ├── storage/                # 存储管理层
+│   ├── config/                 # 配置文件
+│   └── utils/                  # 工具组件
 ├── sandbox-system/             # 沙盘系统模块
 │   ├── README.md              # 沙盘系统架构说明
 │   ├── dashboard/             # 仪表板界面组件
 │   ├── analysis-engine/       # 核心分析引擎
 │   ├── simulation-core/       # 模拟计算核心
 │   └── visualization/         # 数据可视化组件
-└── data-collector/            # 信息收集器模块
-    ├── README.md              # 数据收集器架构说明
-    ├── data-sources/          # 数据源管理
-    ├── processors/            # 数据处理器
-    ├── storage/               # 数据存储管理
-    └── quality-control/       # 质量控制系统
+└── web-server/                # Web服务器模块
+    ├── package.json           # Node.js依赖配置
+    ├── server.js              # 服务器主文件
+    └── public/                # 静态资源文件
 ```
 
 ## 🔧 技术栈规范
 
 ### 核心技术要求
-- **Python 3.14+**：主要开发语言
+- **Python 3.8+**：主要开发语言
+- **Node.js 16+**：Web服务器运行环境
 - **SQLite**：本地数据存储
 - **标准库优先**：减少外部依赖
 - **向后兼容**：确保版本稳定性
@@ -56,20 +125,20 @@ software-modules/
 
 ## 🔄 数据流规范
 
-### 信息收集器数据流
+### 数据中台数据流
 ```mermaid
 graph LR
-    A[数据源] --> B[采集器]
-    B --> C[数据清洗]
-    C --> D[质量检查]
-    D --> E[数据库存储]
-    E --> F[沙盘系统]
+    A[外部数据源] --> B[数据中台]
+    B --> C[统一数据接口]
+    C --> D[缓存管理]
+    D --> E[沙盘系统]
+    D --> F[Web服务器]
 ```
 
 ### 沙盘系统数据流
 ```mermaid
 graph LR
-    A[数据库] --> B[分析引擎]
+    A[数据中台] --> B[分析引擎]
     B --> C[模拟计算]
     C --> D[可视化展示]
     D --> E[用户界面]
@@ -84,12 +153,12 @@ graph LR
 - **风险分析**：VaR和压力测试
 - **报告生成**：自动化分析报告
 
-### 信息收集器功能要求
-- **多源数据采集**：支持多种金融数据源
-- **实时数据更新**：定时自动采集机制
-- **数据质量监控**：完整性检查和验证
-- **存储优化**：高效的数据存储结构
-- **API接口**：标准化数据访问接口
+### 数据中台功能要求
+- **统一数据接入**：支持多种金融数据源标准化接入
+- **智能缓存管理**：多级缓存策略提升访问性能
+- **数据源管理**：统一配置和监控各类数据源
+- **API服务**：标准化数据访问接口
+- **健康监控**：实时监控系统状态和性能指标
 
 ## 🔐 安全与合规规范
 
@@ -110,26 +179,30 @@ graph LR
 ### 本地部署标准
 ```
 开发环境: Windows/Linux/macOS
-运行方式: Python脚本直接运行
+运行方式: 
+  - Python模块: python main.py
+  - Node.js服务: npm start
 数据存储: 本地SQLite文件
-依赖管理: requirements.txt
+依赖管理: requirements.txt 和 package.json
 ```
 
 ### 扩展部署规范（未来）
 ```
-Web服务: Node.js + Express
+Web服务: Nginx + Node.js集群
 数据库: PostgreSQL（大数据量）
-缓存: Redis
-消息队列: RabbitMQ
+缓存: Redis集群
+负载均衡: HAProxy
+容器化: Docker + Kubernetes
 ```
 
 ## 📈 性能指标规范
 
 ### 当前性能标准
-- **数据采集**: 支持5+数据源并发采集
-- **存储容量**: SQLite支持TB级数据存储
-- **查询性能**: 毫秒级响应时间
-- **内存占用**: < 500MB运行时内存
+- **数据源支持**: 支持4+主流金融数据源
+- **缓存命中率**: >80%缓存命中率
+- **查询性能**: 毫秒级响应时间（缓存命中）
+- **内存占用**: < 200MB运行时内存
+- **并发处理**: 支持50+并发请求
 
 ### 扩展性能目标
 - **并发处理**: 支持100+并发数据源
