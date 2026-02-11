@@ -13,9 +13,16 @@ from pathlib import Path
 project_root = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(project_root))
 
-from analysis_engine.database_accessor import DatabaseAccessor
-from dashboard.lightweight_data_generator import DataGenerator
-from utils.sandbox_observer import SandboxObserver
+# 临时修复导入问题
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), 'analysis-engine'))
+sys.path.append(os.path.join(os.path.dirname(__file__), 'dashboard'))
+sys.path.append(os.path.join(os.path.dirname(__file__), 'utils'))
+
+from database_accessor import DatabaseAccessor
+from lightweight_data_generator import DataGenerator
+from sandbox_observer import SandboxObserver
 
 def main():
     """主函数"""
