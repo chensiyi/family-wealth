@@ -91,6 +91,10 @@ app.get('/professional', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/professional_trading.html'));
 });
 
+app.get('/trading-hall', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public/realtime_trading_hall.html'));
+});
+
 app.get('/demo', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/demo.html'));
 });
