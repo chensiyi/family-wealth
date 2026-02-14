@@ -60,7 +60,23 @@
 
 ---
 
+## 5. 传导与分配组件 (Transmission & Distribution)
+*理论来源：Richard Cantillon (Cantillon Effect), John Maynard Keynes (Liquidity Trap), Hyman Minsky (Financial Instability Hypothesis)*
+
+### 原理：非均匀传导与不稳定性
+- **工程法则**：新增货币沿着金融管道非均匀扩散，越靠近源头越先获益（坎蒂隆）；长期稳定滋生过度杠杆，体系进入自我放大直至崩溃（明斯基）；在高债与不确定性下，降息与扩表传导失效（流动性陷阱）。
+- **本系统应用**：
+    - **组件名称**：**坎蒂隆定位器 + 明斯基红旗 + 传导滞后计**
+    - **功能**：识别注入窗口、监控融资类型结构、测量政策—价格—实体的时间滞后。
+    - **设计规范**：
+        - **站位**：稳固L2席位，尽可能靠近L1.5的信息/资金距离。
+        - **红旗**：按安全/投机/庞氏三分法统计融资结构；“永久繁荣”叙事与庞氏占比过高即触发降杠杆SOP。
+        - **滞后**：央行扩表至CPI显性抬升的12–18个月窗口内完成硬资产置换。
+    - **相关章节**： [04 游戏机制与策略](04-game-mechanics-and-strategy.md)、[08 周期配置与动态调整](08-cycle-configuration.md)、[09 情报系统](09-intelligence-system.md)
+
 ## 总结：机器的运行逻辑
+1.  **底盘 (Dalio)** 保证车身在颠簸路面平稳。
+2.  **安全气囊 (Taleb)** 保证撞车时不致命。
 1.  **底盘 (Dalio)** 保证车身在颠簸路面平稳。
 2.  **安全气囊 (Taleb)** 保证撞车时不致命。
 3.  **导航仪 (Shiller)** 提示前方是悬崖还是平原。
@@ -75,10 +91,12 @@
   - [02 历史构成](02-historical-structure.md)
   - [03 参与者与层级](03-actors-and-tiers.md)
   - [04 游戏机制与策略](04-game-mechanics-and-strategy.md)
+  - [04.1 家族办公室作用](04.1-family-office-role.md)
+  - [04.2 镜像与博弈：向顶级猎手对齐](04.2-benchmarking-and-alignment.md)
   - [05 体系设计原则](05-system-design-principles.md)
-  - [05+ 大师案例借鉴](05+-master-case-studies.md)
+  - [05.1 大师案例借鉴](05.1-master-case-studies.md)
   - [06 家族治理与传承](06-family-governance.md)
-  - [07 资产相关性矩阵](07-asset-correlation-matrix.md)
+  - [07 资产配置与对冲模型——哑铃策略与三桶金](07-asset-correlation-matrix.md)
   - [08 周期配置与动态调整](08-cycle-configuration.md)
   - [09 情报系统](09-intelligence-system.md)
   - [10 行为体系](10-action-system.md)

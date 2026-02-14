@@ -5,6 +5,7 @@
 ## 背景与问题定义
 - 市面教程与AI资料存在利益冲突与叙事偏误，忽视地缘与监管突变
 - 目标：在既定秩序中构建可验证、可回滚、可传承的稳健体系
+- 补充说明：研究过程中，ai多次发现数据离岸、保护人制度与法域间的强相互作用机制，并建议建立自己的“数字租界”
 
 ## 设计原则
 - 合规优先、结构胜于收益、证据链与透明度、冗余与可回滚、最小对手方风险、供应商中立
@@ -103,8 +104,9 @@
 ## 导航与关联
 - 返回目录：[README](README.md)
 - 相关章节：
-  - [04+ 家族办公室作用](04+-family-office-role.md)
-  - [05+ 大师案例借鉴](05+-master-case-studies.md)
+  - [05.1 大师案例借鉴](05.1-master-case-studies.md)
+  - [05.2 离线与物理资产的数字锚定](05.2-offline-and-physical-asset-digital-anchoring.md)
+  - [04.1 家族办公室作用](04.1-family-office-role.md)
   - [06 家族治理与传承](06-family-governance.md)
 
-上一章：[04+ 家族办公室作用](04+-family-office-role.md) · 下一章：[05+ 大师案例借鉴](05+-master-case-studies.md)
+上一章：[04.1 家族办公室作用](04.1-family-office-role.md) · 下一章：[05.1 大师案例借鉴](05.1-master-case-studies.md)
