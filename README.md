@@ -24,11 +24,12 @@
 - [02 历史构成](02-historical-structure.md) - 家族财富管理发展史
 - [03 参与者与层级](03-actors-and-tiers.md) - 市场角色和层级分析
 - [04 游戏机制与策略](04-game-mechanics-and-strategy.md) - 核心策略模块总章
-- [04+ 家族办公室作用](04+-family-office-role.md) - 专业服务机构定位
+- [04.1 家族办公室作用](04.1-family-office-role.md) - 专业服务机构定位
+- [04.2 镜像与博弈：向顶级猎手对齐](04.2-benchmarking-and-alignment.md) - 对标标尺与影子学习
 - [05 体系设计原则](05-system-design-principles.md) - 架构设计核心理念
 - [05.1 大师案例借鉴](05.1-master-case-studies.md) - 经典案例深度分析
-- [06 家族治理与传承](06-family-governance.md) - 治理结构和传承机制
-- [07 资产相关性矩阵](07-asset-correlation-matrix.md) - 资产配置核心工具
+- [06 家族治理与传承](06-family-governance.md) - 家族法律与管理框架
+- [07 资产配置与对冲模型——哑铃策略与三桶金](07-asset-correlation-matrix.md) - 哑铃策略与“三桶金”
 - [08 周期配置与动态调整](08-cycle-configuration.md) - 时间维度的资产配置
 - [09 情报系统](09-intelligence-system.md) - 信息收集和分析体系
 - [10 行为体系](10-action-system.md) - 决策执行和行为规范
@@ -55,6 +56,7 @@
 - [会话摘要](logs/SESSION_SUMMARIES.md) - 会话要点记录
 - [架构设计](docs/SYSTEM_ARCHITECTURE_DESIGN.md) - 系统设计规范
 
+<!--
 ### 🚀 技术实现文档
 - [软件总体设计](software-modules/README.md) - 系统架构
 - [增强数据源说明](software-modules/data-hub/data-sources/enhanced/README.md) - 选股级数据服务
@@ -72,7 +74,7 @@ family-wealth/
 ├── references/         # 参考资料
 └── templates/          # 模板文件
 ```
-
+-->
 ## 🔄 使用建议
 
 ### 📚 新手入门路径
