@@ -156,6 +156,7 @@
   - [04.2 镜像与博弈：向顶级猎手对齐](04.2-benchmarking-and-alignment.md)
   - [05.1 大师案例借鉴](05.1-master-case-studies.md)
   - [06 家族治理与传承](06-family-governance.md)
+  - [06.1 犹太家族财富治理框架](06.1-jewish-wealth-governance-framework.md)
   - [07 资产配置与对冲模型——哑铃策略与三桶金](07-asset-correlation-matrix.md)
   - [08 周期配置与动态调整](08-cycle-configuration.md)
   - [09 情报系统](09-intelligence-system.md)

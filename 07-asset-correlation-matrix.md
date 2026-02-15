@@ -86,4 +86,4 @@
   - [14 索引与更新规则](14-index-and-update-rules.md)
   - [15 大师理论基石](15-master-theories.md)
 
-上一章：[06 家族治理与传承](06-family-governance.md) · 下一章：[08 周期配置与动态调整](08-cycle-configuration.md)
+上一章：[06.1 犹太家族财富治理框架](06.1-jewish-wealth-governance-framework.md) · 下一章：[08 周期配置与动态调整](08-cycle-configuration.md)

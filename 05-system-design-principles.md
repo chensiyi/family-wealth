@@ -108,5 +108,6 @@
   - [05.2 离线与物理资产的数字锚定](05.2-offline-and-physical-asset-digital-anchoring.md)
   - [04.1 家族办公室作用](04.1-family-office-role.md)
   - [06 家族治理与传承](06-family-governance.md)
+  - [06.1 犹太家族财富治理框架](06.1-jewish-wealth-governance-framework.md)
 
 上一章：[04.1 家族办公室作用](04.1-family-office-role.md) · 下一章：[05.1 大师案例借鉴](05.1-master-case-studies.md)

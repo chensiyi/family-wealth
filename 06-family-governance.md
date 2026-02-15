@@ -104,4 +104,4 @@
   - [14 索引与更新规则](14-index-and-update-rules.md)
   - [15 大师理论基石](15-master-theories.md)
 
-上一章：[05 体系设计原则](05-system-design-principles.md) · 下一章：[07 资产相关性矩阵](07-asset-correlation-matrix.md)
+上一章：[05 体系设计原则](05-system-design-principles.md) · 下一章：[06.1 犹太家族财富治理框架](06.1-jewish-wealth-governance-framework.md)
