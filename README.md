@@ -28,8 +28,9 @@
 - [04.2 镜像与博弈：向顶级猎手对齐](04.2-benchmarking-and-alignment.md) - 对标标尺与影子学习
 - [05 体系设计原则](05-system-design-principles.md) - 架构设计核心理念
 - [05.1 大师案例借鉴](05.1-master-case-studies.md) - 经典案例深度分析
-- [06 家族治理与传承](06-family-governance.md) - 家族法律与管理框架
-- [07 资产配置与对冲模型——哑铃策略与三桶金](07-asset-correlation-matrix.md) - 哑铃策略与“三桶金”
+- [05.2 离线与物理资产数字锚定](05.2-offline-and-physical-asset-digital-anchoring.md) - RWA技术实现
+- [06 家族治理与传承](06-family-governance.md) - 治理结构和传承机制
+- [07 资产相关性矩阵](07-asset-correlation-matrix.md) - 资产配置核心工具
 - [08 周期配置与动态调整](08-cycle-configuration.md) - 时间维度的资产配置
 - [09 情报系统](09-intelligence-system.md) - 信息收集和分析体系
 - [10 行为体系](10-action-system.md) - 决策执行和行为规范
@@ -38,9 +39,6 @@
 - [13 定位与意义](13-positioning-and-meaning.md) - 项目价值和使命
 - [14 资料索引与更新规则](14-index-and-update-rules.md) - 维护规范
 - [15 大师理论基石](15-master-theories.md) - 理论基础和方法论
--
-- 附：扩展模块
-- [05.2 离线与物理资产的数字锚定](05.2-offline-and-physical-asset-digital-anchoring.md) - RWA与证据链设计
 
 ### 📎 附加工具和参考资料
 - [术语词汇表](TERMINOLOGY_GLOSSARY.md) ← **建议优先阅读**
@@ -56,12 +54,83 @@
 - [会话摘要](logs/SESSION_SUMMARIES.md) - 会话要点记录
 - [架构设计](docs/SYSTEM_ARCHITECTURE_DESIGN.md) - 系统设计规范
 
-<!--
-### 🚀 技术实现文档
-- [软件总体设计](software-modules/README.md) - 系统架构
-- [增强数据源说明](software-modules/data-hub/data-sources/enhanced/README.md) - 选股级数据服务
-- [数据中台说明](software-modules/data-hub/README.md) - 统一数据服务
-- [综合升级计划](plans/COMPREHENSIVE_UPGRADE_PLAN.md) - 发展规划
+<!--### 🚀 技术实现文档
+- [软件总体设计](software-modules/README.md) - 系统架构和工具整合策略
+- [数据支撑说明](software-modules/data-hub/README.md) - 基础数据服务
+
+
+### 💻 实时交易大厅
+- **完整交易功能**: 限价单、市价单、止损单等专业交易方式
+- **实时行情监控**: 股票价格、买卖盘、市场深度实时更新
+- **持仓管理**: 完整的投资组合跟踪和盈亏分析
+- **订单管理**: 委托下单、订单撤销、交易历史查询
+- **技术分析**: 基本面和技术面双重分析支持
+- **访问地址**: [http://localhost:3000/trading-hall](http://localhost:3000/trading-hall)
+
+## 🧪 沙盒系统功能详解
+
+### 📊 核心功能模块
+
+#### 1. 持仓模拟系统
+- **真实交易模拟**: 支持买入、卖出、分红等完整交易流程
+- **持仓管理**: 实时跟踪股票持仓、成本基础、市场价值
+- **盈亏分析**: 自动计算未实现盈亏、已实现盈亏和总收益
+- **风险控制**: 资金验证、持仓验证等安全保障机制
+
+#### 2. 参数关联分析
+- **央行政策监控**: 实时跟踪各国央行政策利率变化
+- **税收政策分析**: 监控资本利得税、股息税等税务变化
+- **宏观经济联动**: 分析利率、通胀、GDP等对投资组合的影响
+
+#### 3. 新闻事件跟踪
+- **全球行业覆盖**: 7大重点行业（科技、能源、金融、医疗、消费、工业、通信）
+- **多地区监测**: 美国、中国、欧洲、日本、韩国等主要市场
+- **关键事件识别**: 自动识别对公司和行业有重大影响的新闻事件
+- **情绪分析**: 新闻情绪分类和影响力评估
+
+#### 4. 数据驱动决策
+- **技术分析**: 完整的技术指标计算（MA、RSI、MACD、布林带等）
+- **基本面筛选**: 价值、成长、质量三维度股票筛选
+- **投资评级**: 自动生成买卖建议和风险评估
+
+### 🎯 使用场景示例
+
+```python
+# 1. 创建投资组合
+from portfolio_module import PortfolioManager
+portfolio = PortfolioManager(initial_cash=1000000)
+
+# 2. 模拟交易
+portfolio.buy_stock("NVDA", 100, 850.00, fees=10.00, description="AI芯片龙头建仓")
+portfolio.buy_stock("JNJ", 200, 150.00, fees=10.00, description="防御性医疗股配置")
+
+# 3. 更新市场价格
+portfolio.update_prices({"NVDA": 875.28, "JNJ": 152.40})
+
+# 4. 查看投资组合表现
+summary = portfolio.get_portfolio_summary()
+print(f"总资产: ${summary['total_value']:,.2f}")
+print(f"未实现盈亏: ${summary['unrealized_pnl']:,.2f}")
+
+# 5. 风险分析
+risk_metrics = portfolio.get_risk_metrics()
+print(f"夏普比率: {risk_metrics['sharpe_ratio']:.2f}")
+print(f"最大回撤: {risk_metrics['max_drawdown']['max_drawdown']*100:.2f}%")
+```
+
+### 📈 数据源扩展能力
+
+#### 全球新闻收集
+- **科技行业**: 半导体、人工智能、云计算、芯片、软件等领域动态
+- **能源行业**: 石油、天然气、新能源、电池、太阳能等发展趋势
+- **金融行业**: 银行、保险、证券、金融科技、支付等创新动向
+- **医疗健康**: 医药、生物科技、医疗器械、疫苗、基因等前沿进展
+
+#### 专业分析工具
+- **股票筛选**: 基于PE、PB、股息率等价值指标筛选
+- **成长分析**: 营收增长、盈利增长、账面价值增长评估
+- **质量评估**: 负债比率、流动比率、ROA、ROE等财务健康度
+- **技术分析**: 完整的技术指标体系支持投资决策
 
 ## 📁 项目结构
 
@@ -74,7 +143,8 @@ family-wealth/
 ├── references/         # 参考资料
 └── templates/          # 模板文件
 ```
--->
+ --> 
+
 ## 🔄 使用建议
 
 ### 📚 新手入门路径
