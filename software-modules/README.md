@@ -1,13 +1,21 @@
 # 软件功能模块总体设计
 
-> **文档摘要**: 本文件定义家族财富管理系统软件模块的整体架构和核心逻辑，建立从数据采集到分析展示的完整技术框架。遵循项目五层架构原则，确保与知识体系的无缝对接。
+> **文档摘要**: 本文件定义家族财富管理系统软件模块的整体架构和核心逻辑，重点在于为知识体系提供数据支撑和技术实现。遵循项目五层架构原则，确保与知识体系的无缝对接。
 
 ## 🎯 项目定位
 
-本软件模块体系作为知识框架的技术实现层，为家族财富管理提供：
-- **数据基础设施**：现代化数据中台架构
-- **分析引擎**：智能化的数据处理和分析能力
-- **交互界面**：直观友好的数据展示和操作平台
+本软件模块体系专注于为家族财富管理知识体系提供：
+- **数据支撑**：为理论分析提供基础数据支持
+- **工具整合**：集成现有成熟软件工具
+- **知识应用**：将理论框架转化为实用工具
+
+## 📚 核心理念
+
+我们采用"知识驱动、工具整合"的策略：
+1. **专注知识体系建设** - 将主要精力投入到理论框架构建
+2. **整合成熟工具** - 利用业界已有优秀软件
+3. **适度技术实现** - 仅在必要时进行技术开发
+4. **保持简洁实用** - 避免过度工程化
 
 ## 🚀 快速开始
 
@@ -28,31 +36,19 @@ source venv/bin/activate  # Linux/Mac
 
 ### 模块运行方式
 
-#### 1. 数据中台模块
+#### 1. 信息收集器模块
 ```bash
-# 进入数据中台目录
-cd data-hub
+# 进入信息收集器目录
+cd data-collector
 
-# 初始化数据库
-python storage/initialize_hub_database.py
+# 初始化专业数据库
+python storage/initialize_professional_database.py
 
-# 启动数据中台服务
+# 启动数据收集器
 python main.py
 ```
 
-#### 2. 沙盘系统模块
-```bash
-# 进入沙盘系统目录
-cd sandbox-system
-
-# 启动沙盘系统
-python main.py
-
-# 运行功能测试
-python -c "from utils.data_hub_adapter import create_sandbox_data_adapter; adapter = create_sandbox_data_adapter(); print('健康检查:', adapter.health_check())"
-```
-
-#### 3. Web服务器模块
+#### 2. Web服务器模块
 ```bash
 # 进入Web服务器目录
 cd web-server
@@ -66,11 +62,8 @@ npm start
 
 ### 常用命令
 ```bash
-# 查看所有模块状态
-python -c "import sys; sys.path.append('.'); from data_hub.main import DataHub; hub = DataHub(); print(hub.health_check())"
-
-# 测试数据获取
-python -c "from sandbox_system.utils.data_hub_adapter import create_sandbox_data_adapter; adapter = create_sandbox_data_adapter(); result = adapter.get_financial_data('SPY', 'prices'); print('SPY数据:', '成功' if result['success'] else '失败')"
+# 测试信息收集器功能
+python -c "from data_collector.processors.financial_data_analyzer import FinancialDataAnalyzer; analyzer = FinancialDataAnalyzer('storage/family_wealth_professional.db'); print('数据库连接:', '成功' if analyzer else '失败')"
 ```
 
 ## 🏗️ 系统架构设计
@@ -87,35 +80,38 @@ python -c "from sandbox_system.utils.data_hub_adapter import create_sandbox_data
 
 ## 📁 目录结构规范
 
+## 📁 当前模块结构
+
 ```
 software-modules/
 ├── README.md                    # 本文件 - 软件总体设计
-├── data-hub/                    # 数据中台模块
-│   ├── README.md               # 数据中台架构说明
-│   ├── core/                   # 核心服务层
-│   ├── storage/                # 存储管理层
-│   ├── config/                 # 配置文件
-│   └── utils/                  # 工具组件
-├── sandbox-system/             # 沙盘系统模块
-│   ├── README.md              # 沙盘系统架构说明
-│   ├── dashboard/             # 仪表板界面组件
-│   ├── analysis-engine/       # 核心分析引擎
-│   ├── simulation-core/       # 模拟计算核心
-│   └── visualization/         # 数据可视化组件
-└── web-server/                # Web服务器模块
-    ├── package.json           # Node.js依赖配置
-    ├── server.js              # 服务器主文件
-    └── public/                # 静态资源文件
+├── data-hub/                    # 数据支撑模块
+│   ├── README.md               # 数据支撑架构说明
+│   ├── data-sources/           # 数据源配置
+│   ├── storage/                # 数据存储管理
+│   └── core/                   # 核心数据处理
+└── web-server/                 # Web服务模块
+    ├── package.json            # Node.js依赖配置
+    ├── server.js               # 服务器主文件
+    └── public/                 # 静态资源文件
 ```
 
 ## 🔧 技术栈规范
 
+## 🔧 技术栈规范
+
 ### 核心技术要求
-- **Python 3.8+**：主要开发语言
-- **Node.js 16+**：Web服务器运行环境
+- **Python 3.8+**：数据处理和分析
+- **Node.js 16+**：Web服务运行环境
 - **SQLite**：本地数据存储
 - **标准库优先**：减少外部依赖
 - **向后兼容**：确保版本稳定性
+
+### 开发原则
+- **简约实用**：避免过度设计
+- **文档驱动**：先完善理论再考虑实现
+- **工具整合**：优先使用现有成熟工具
+- **渐进完善**：小步快跑，持续改进
 
 ### 开发规范
 - 遵循PEP 8代码风格
@@ -144,21 +140,13 @@ graph LR
     D --> E[用户界面]
 ```
 
-## 📊 核心功能规范
+## 📊 核心功能定位
 
-### 沙盘系统功能要求
-- **实时仪表板**：支持多维度数据展示
-- **历史回测**：投资策略验证功能
-- **情景模拟**：市场变化预测分析
-- **风险分析**：VaR和压力测试
-- **报告生成**：自动化分析报告
-
-### 数据中台功能要求
-- **统一数据接入**：支持多种金融数据源标准化接入
-- **智能缓存管理**：多级缓存策略提升访问性能
-- **数据源管理**：统一配置和监控各类数据源
-- **API服务**：标准化数据访问接口
-- **健康监控**：实时监控系统状态和性能指标
+### 数据支撑功能
+- **基础数据获取**：为知识体系提供必要的数据支持
+- **数据质量管理**：确保数据的准确性和完整性
+- **存储优化**：高效的本地数据管理
+- **接口标准化**：统一的数据访问接口
 
 ## 🔐 安全与合规规范
 
@@ -198,17 +186,16 @@ Web服务: Nginx + Node.js集群
 ## 📈 性能指标规范
 
 ### 当前性能标准
-- **数据源支持**: 支持4+主流金融数据源
-- **缓存命中率**: >80%缓存命中率
-- **查询性能**: 毫秒级响应时间（缓存命中）
-- **内存占用**: < 200MB运行时内存
-- **并发处理**: 支持50+并发请求
+- **数据源支持**: 支持多类主流金融数据源
+- **存储容量**: SQLite支持TB级数据存储
+- **查询性能**: 毫秒级响应时间
+- **内存占用**: < 500MB运行时内存
 
 ### 扩展性能目标
-- **并发处理**: 支持100+并发数据源
-- **实时更新**: 秒级数据更新频率
-- **历史数据**: 20+年历史数据存储
-- **用户支持**: 多用户同时在线使用
+- **数据源扩展**: 支持更多专业数据提供商
+- **存储优化**: 支持更大规模数据存储
+- **分析能力**: 集成更多专业分析工具
+- **用户支持**: 支持多用户场景
 
 ## 🛠️ 维护与升级规范
 
@@ -251,6 +238,31 @@ Web服务: Nginx + Node.js集群
 - 建立修改影响评估checklist
 - 定期进行架构健康度review
 - 保持向后兼容性
+
+## 🛠️ 成熟工具推荐
+
+### 数据分析工具
+- **Excel/LibreOffice**：基础数据处理和分析
+- **Python生态**：Jupyter Notebook + Pandas进行深度分析
+- **专业软件**：根据具体需求选择合适的商业软件
+
+### 投资管理工具
+- **Portfolio Visualizer**：投资组合回测和优化
+- **Morningstar**：基金分析和评级
+- **各大券商软件**：实时行情和交易支持
+
+### 数据源工具
+- **Wind/同花顺**：专业金融数据平台
+- **Yahoo Finance**：免费国际数据源
+- **各大交易所官网**：权威原始数据
+
+## 🔄 发展策略
+
+本项目采用"知识优先、工具整合"的发展策略：
+1. **第一阶段**：完善知识体系架构
+2. **第二阶段**：整合现有成熟工具
+3. **第三阶段**：适度开发必要功能
+4. **持续优化**：根据实际需求调整策略
 
 ---
 *本文档作为软件模块的"宪法"，任何修改都必须谨慎考虑其对整体架构的影响*

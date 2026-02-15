@@ -24,7 +24,15 @@
 - 资产价格急剧下跌
 - 信贷市场冻结
 **历史案例**: 2008年次贷危机、2020年流动性危机
-**相关章节**: [02 历史构成](02-historical-structure.md)、[08 周期配置与动态调整](08-cycle-configuration.md)
+**三分法**: 安全型（本息覆盖）/ 投机型（仅息覆盖，续贷依赖）/ 庞氏型（连息不覆，靠价格上涨续命）
+**相关章节**: [04 游戏机制与策略](04-game-mechanics-and-strategy.md)、[02 历史构成](02-historical-structure.md)、[08 周期配置与动态调整](08-cycle-configuration.md)
+
+#### 流动性陷阱 (Liquidity Trap)
+**定义**: 利率降至零或负值时，经济主体因高负债与不确定性而拒绝新增借贷，货币政策传导失效
+**表现**:
+- 央行扩表但信贷不扩张、货币周转率下降
+- 资金在银行体系内空转，实体投资与消费不响应
+**相关章节**: [04 游戏机制与策略](04-game-mechanics-and-strategy.md)、[15 大师理论基石](15-master-theories.md)
 
 #### 流动性风险 (Liquidity Risk)
 **定义**: 资产无法及时变现或变现成本过高的风险
@@ -63,6 +71,22 @@
 **核心思想**: 限制下行风险，同时保留上行潜力
 **相关章节**: [10 行为体系](10-action-system.md)、[15 大师理论基石](15-master-theories.md)
 
+#### 干粉 (Dry Powder)
+**定义**: 预留的现金/等价物，用于危机时获取更优条款与资产
+**建议范围**: 组合10%–15%（视风险承受与法域流动性而定）
+**相关章节**: [04 游戏机制与策略](04-game-mechanics-and-strategy.md)、[11 运行说明书](11-operating-manual.md)
+
+#### 相关性趋同 (Correlation Convergence)
+**定义**: 极端去杠杆阶段不同资产类别的价格同步下跌、相关性短期上升至接近1的现象
+**含义**: 传统分散化在危机中失效，需要“绝对无关性”资产对冲
+**相关章节**: [07 资产相关性矩阵](07-asset-correlation-matrix.md)、[04 游戏机制与策略](04-game-mechanics-and-strategy.md)
+
+#### 系统外资产 (Off-System Assets)
+**定义**: 不依赖单一国家信用或SWIFT网络的资产形态
+**典型**: 实物黄金、可离线自持的加密资产、部分境外票据/贵金属仓单
+**用途**: 主权极端手段或彻底关机场景的“操作系统备份”
+**相关章节**: [04 游戏机制与策略](04-game-mechanics-and-strategy.md)、[05 体系设计原则](05-system-design-principles.md)
+
 ### 3. 家族治理体系概念
 
 #### 法域规划 (Jurisdiction Planning)
@@ -72,7 +96,22 @@
 - 资产保护法律环境
 - 政治稳定性评估
 - 跨境传承便利性
-**相关章节**: [05 体系设计原则](05-system-design-principles.md)、[05+ 大师案例借鉴](05+-master-case-studies.md)、[06 家族治理与传承](06-family-governance.md)
+**相关章节**: [05 体系设计原则](05-system-design-principles.md)、[05.1 大师案例借鉴](05.1-master-case-studies.md)、[06 家族治理与传承](06-family-governance.md)
+
+#### 资产所在地 (Situs) 与税务居民 (Residency)
+**定义**: 资产受何法域管辖的所在地（Situs）与自然人/实体的税务归属（Residency）
+**设计要点**: 两者解耦以降低单一法域管控与冻结风险
+**相关章节**: [05 体系设计原则](05-system-design-principles.md)、[04 游戏机制与策略](04-game-mechanics-and-strategy.md)
+
+#### 保护人 (Protector)
+**定义**: 信托架构中的监督者，通常拥有对受托人的否决与撤换权
+**作用**: 作为“断路器”对冲受托行作恶与发起人失能的双向风险
+**相关章节**: [05.2 离线与物理资产的数字锚定](05.2-offline-and-physical-asset-digital-anchoring.md)、[05 体系设计原则](05-system-design-principles.md)
+
+#### 金融租界 / 主权防火墙
+**定义**: 通过离岸法域与高信誉托管行形成的资产保护边界，降低本地主权直接干预
+**实现**: 多法域账户与托管“热切换”、法律协议与备份通道冗余
+**相关章节**: [05.1 大师案例借鉴](05.1-master-case-studies.md)、[05 体系设计原则](05-system-design-principles.md)
 
 #### 家族宪章 (Family Charter)
 **定义**: 家族成员共同制定的价值观、原则和行为准则文件
@@ -119,6 +158,23 @@
 **重要发现**: 非理性繁荣、过度自信、损失厌恶
 **应用**: 市场情绪监测、投资者教育
 **相关章节**: [09 情报系统](09-intelligence-system.md)、[15 大师理论基石](15-master-theories.md)
+
+#### 坎蒂隆效应 (Cantillon Effect)
+**提出者**: Richard Cantillon
+**核心观点**: 新增货币并非均匀进入经济体系，靠近货币源头的主体先获益，分配结构扭曲
+**应用**: 解释资产先行通胀与消费端滞后；制定家族在L2/L1.5的站位策略
+**相关章节**: [04 游戏机制与策略](04-game-mechanics-and-strategy.md)、[05.1 大师案例借鉴](05.1-master-case-studies.md)
+
+#### 货币传导机制与时间滞后 (Monetary Transmission & Time Lag)
+**内容**: 利率→信贷→资产价格→抵押→实体经济的传导路径存在显著时间滞后
+**窗口**: 央行扩表至CPI显性抬升通常滞后12–18个月
+**相关章节**: [04 游戏机制与策略](04-game-mechanics-and-strategy.md)、[08 周期配置与动态调整](08-cycle-configuration.md)
+
+#### 浮存金 (Insurance Float)
+**提出者**: Warren Buffett 实践
+**定义**: 保险公司收取保费至赔付之间形成的低成本、长久期资金池
+**应用**: 危机期获取不对称条款；小FO以“干粉+条款优先”模拟
+**相关章节**: [05.1 大师案例借鉴](05.1-master-case-studies.md)
 
 ## 术语使用规范
 
