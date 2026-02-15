@@ -30,6 +30,7 @@
 - [05.1 大师案例借鉴](05.1-master-case-studies.md) - 经典案例深度分析
 - [05.2 离线与物理资产数字锚定](05.2-offline-and-physical-asset-digital-anchoring.md) - RWA技术实现
 - [06 家族治理与传承](06-family-governance.md) - 治理结构和传承机制
+- [06.1 犹太家族财富治理框架](06.1-jewish-wealth-governance-framework.md) - 千年财富传承的社会学机制与控制力来源
 - [07 资产相关性矩阵](07-asset-correlation-matrix.md) - 资产配置核心工具
 - [08 周期配置与动态调整](08-cycle-configuration.md) - 时间维度的资产配置
 - [09 情报系统](09-intelligence-system.md) - 信息收集和分析体系
