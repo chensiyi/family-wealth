@@ -16,15 +16,15 @@
 
 ### 为什么保留全天候？
 
-**全天候的核心价值在于其"不预测未来"**。它通过对冲（股、债、商品、黄金）抵消了80%的宏观噪音。
+**[全天候](TERMINOLOGY_GLOSSARY.md#全天候底盘-all-weather-chassis)的核心价值在于其"不预测未来"**。它通过对冲（股、债、商品、黄金）抵消了80%的宏观噪音。
 
-对于1亿量级的单兵来说，你无法时刻盯盘。**全天候底盘确保了当你"不在场"时，系统不会因为一次突发的通胀或加息而瞬间崩塌**。
+对于1亿量级的单兵来说，你无法时刻盯盘。**[全天候底盘](TERMINOLOGY_GLOSSARY.md#全天候底盘-all-weather-chassis)确保了当你"不在场"时，系统不会因为一次突发的通胀或加息而瞬间崩塌**。
 
 ### 本系统改进：从"全资产"向"全法域"进化
 
 - **低成本化**：不再通过昂贵的对冲基金，而是通过跨法域的低费率ETF构建
-- **双重对冲**：传统的全天候只管资产类别，我们的全天候要求"资产性质 + 地理法域"的双重对冲
-- **被动守护**：80%的资产按照全天候逻辑分散配置，系统处于"静默运行"状态
+- **双重对冲**：传统的[全天候](TERMINOLOGY_GLOSSARY.md#全天候底盘-all-weather-chassis)只管资产类别，我们的全天候要求"资产性质 + 地理法域"的双重对冲
+- **被动守护**：80%的资产按照[全天候](TERMINOLOGY_GLOSSARY.md#全天候底盘-all-weather-chassis)逻辑分散配置，系统处于"静默运行"状态
 
 ### 设计规范
 - 股票（进攻）与国债（防守）必须配对，利用其负相关性
@@ -37,29 +37,29 @@
 
 ### 为什么精准狙击才是当前的核心？
 
-#### Beta的平庸化与Alpha的枯竭
-在当前的"收割机"环境下，由于债务杠杆太高，全球资产的波动性在加大，但长期回报率（Beta）在被通胀和税收侵蚀。**单纯靠全天候"躺平"，只能保证不亏，很难实现阶层跨越**。
+#### [Beta](TERMINOLOGY_GLOSSARY.md#beta贝塔系数)的平庸化与[Alpha](TERMINOLOGY_GLOSSARY.md#alpha阿尔法收益)的枯竭
+在当前的"收割机"环境下，由于债务杠杆太高，全球资产的波动性在加大，但长期回报率（Beta）在被通胀和税收侵蚀。**单纯靠[全天候](TERMINOLOGY_GLOSSARY.md#全天候底盘-all-weather-chassis)"躺平"，只能保证不亏，很难实现阶层跨越**。
 
 #### "重置时刻"的非线性机会
-- **全天候是线性思维**：应对常规波动
+- **[全天候](TERMINOLOGY_GLOSSARY.md#全天候底盘-all-weather-chassis)是线性思维**：应对常规波动
 - **精准狙击是非线性思维**：捕捉系统性机会
 
-当系统进入"明斯基时刻"或"流动性枯竭"，优质资产的价格会脱离基本面暴跌。这时候，**全天候只能保命，而"精准狙击"利用那20%的纯净干粉和廉价资金，去接住那些由于系统性窒息而掉落的筹码**。
+当系统进入"[明斯基时刻](TERMINOLOGY_GLOSSARY.md#明斯基时刻-minsky-moment)"或"[流动性](TERMINOLOGY_GLOSSARY.md#流动性风险-liquidity-risk)枯竭"，优质资产的价格会脱离基本面暴跌。这时候，**[全天候](TERMINOLOGY_GLOSSARY.md#全天候底盘-all-weather-chassis)只能保命，而"[精准狙击](TERMINOLOGY_GLOSSARY.md#精准伏击系统-precision-sniper-system)"利用那20%的纯净[干粉](TERMINOLOGY_GLOSSARY.md#干粉-dry-powder)和廉价资金，去接住那些由于系统性窒息而掉落的筹码**。
 
 #### 1亿量级的"调头优势"
-大基金（如桥水）只能玩全天候，因为他们体量太大，无法"狙击"。而**1亿资金恰恰处于"既能享受全天候的安全感，又能随时抽身进行致命一击"的完美水位**。
+大基金（如桥水）只能玩[全天候](TERMINOLOGY_GLOSSARY.md#全天候底盘-all-weather-chassis)，因为他们体量太大，无法"狙击"。而**1亿资金恰恰处于"既能享受[全天候](TERMINOLOGY_GLOSSARY.md#全天候底盘-all-weather-chassis)的安全感，又能随时抽身进行致命一击"的完美水位**。
 
 ### 本系统应用：杠铃式的"全天候 + 狙击"
 
 #### 平时状态（底盘模式）
-- 80%的资产按照全天候逻辑分散配置
-- 利用跨法域PB质押获取廉价资金（Libor+1.2%）
+- 80%的资产按照[全天候](TERMINOLOGY_GLOSSARY.md#全天候底盘-all-weather-chassis)逻辑分散配置
+- 利用跨法域PB质押获取廉价资金（[Libor](TERMINOLOGY_GLOSSARY.md#libor伦敦银行同业拆借利率-london-interbank-offered-rate)+1.2%）
 - 系统处于"静默运行"状态
 
 #### 战时状态（狙击模式）
-当09章情报系统监测到"带血的筹码"出现时（价格远低于重置成本 + 巨鲸被强平），系统立刻调用20%的干粉。
+当09章情报系统监测到"带血的筹码"出现时（价格远低于[重置成本](TERMINOLOGY_GLOSSARY.md#重置成本导航仪-replacement-cost-navigator) + 巨鲸被强平），系统立刻调用20%的[干粉](TERMINOLOGY_GLOSSARY.md#干粉-dry-powder)。
 
-**逻辑**：这20%的狙击不是在赌运气，而是在全天候底盘稳固的基础上，利用"流动性枯竭产生的价差"进行套利。
+**逻辑**：这20%的狙击不是在赌运气，而是在[全天候底盘](TERMINOLOGY_GLOSSARY.md#全天候底盘-all-weather-chassis)稳固的基础上，利用"[流动性](TERMINOLOGY_GLOSSARY.md#流动性风险-liquidity-risk)枯竭产生的价差"进行套利。
 
 ### 设计规范
 - **左端（防御）**：以05-06章架构持有硬资产，作为信用背书
@@ -70,7 +70,7 @@
 ## 3. 动力学组件：信贷脉冲监控
 *理论来源：Richard Cantillon (Cantillon Effect), Hyman Minsky (Financial Instability Hypothesis)*
 
-### 原理：测量你离印钞机的距离，以及收割机启动的倒计时
+### 原理：测量你离印钞机的距离，以及[收割](04-game-mechanics-and-strategy.md)机启动的倒计时
 
 ### 本系统应用：坎蒂隆定位器
 - **组件名称**：**收割时机探测器**
@@ -84,7 +84,7 @@
 ## 4. 估值与导航组件：重置成本导航仪
 *理论来源：Warren Buffett (Intrinsic Value) + Robert Shiller (Mean Reversion)*
 
-### 原理：在系统性危机中，传统估值模型失效，重置成本成为新的锚定标准
+### 原理：在系统性危机中，传统估值模型失效，[重置成本](TERMINOLOGY_GLOSSARY.md#重置成本导航仪-replacement-cost-navigator)成为新的锚定标准
 
 ### 本系统应用：危机估值导航
 - **组件名称**：**重置成本雷达**
