@@ -33,12 +33,7 @@ echo    功能: 数据采集、存储管理、质量控制
 echo    启动: cd software-modules/data-collector && python main.py
 
 echo.
-echo 3. Web服务器
-echo    功能: 提供仪表板Web服务
-echo    启动: cd software-modules/web-server && npm start
-
-echo.
-echo 4. 独立仪表板
+echo 3. 独立仪表板
 echo    financial_analysis_dashboard.html - 基础仪表板
 echo    improved_dashboard.html - 改进版仪表板
 echo    sandbox_dashboard.html - 沙盘仪表板
