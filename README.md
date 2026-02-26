@@ -44,7 +44,7 @@
 ### 📎 附加工具和参考资料
 - [术语词汇表](TERMINOLOGY_GLOSSARY.md) ← **建议优先阅读**
 - [关键流程可视化图表](VISUAL_FLOWCHARTS.md) - 核心流程图解
-- [市场重要参与者数据库](references/MARKET_PARTICIPANTS_DATABASE.md)
+
 - [投资大师复盘演练基础](references/MASTER_INVESTOR_REVIEW_BASE.md)
 - [经济生态系统资本流动分析](references/ECOSYSTEM_ANALYSIS_CAPITAL_FLOWS.md)
 
